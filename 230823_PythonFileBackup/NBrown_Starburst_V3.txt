@@ -1,0 +1,130 @@
+'Starburst V3
+'Normal Print (Bad, with gaps) - 1.25mm thick, with overextrusion for centerline
+REPEAT 3
+
+'Outer walls
+X9.44 Y4.72
+TOGGLE ON
+X18.88 Y0
+X14.16 Y9.44
+X18.88 Y18.88
+X9.44 Y14.16
+X0 Y18.88
+X4.72 Y9.44
+X0 Y0
+X9.44 Y4.72
+
+'Centerline
+X9.44 Y5.14
+X18.04 Y0.84
+X13.74 Y9.44
+X18.04 Y18.04
+X9.44 Y13.74
+X0.84 Y18.04
+X5.14 Y9.44
+X0.84 Y0.84
+X9.44 Y5.14
+
+'Inner Wall
+X9.44 Y5.56
+X17.2 Y1.68
+X13.32 Y9.44
+X17.2 Y17.2
+X9.44 Y13.32
+X1.68 Y17.2
+X9.44 Y13.32
+X1.68 Y17.2
+X5.56 Y9.44
+X1.68 Y1.68
+X9.44 Y5.56
+
+ToggleOFF
+
+G91 
+G0Z0.5
+G90
+
+ENDREPEAT
+
+'Normal Print - Shifted for no gap, but thinner than desired. The inner wall was shifted outwards
+REPEAT 3
+
+'Outer walls
+X9.44 Y4.72
+TOGGLE ON
+X18.88 Y0
+X14.16 Y9.44
+X18.88 Y18.88
+X9.44 Y14.16
+X0 Y18.88
+X4.72 Y9.44
+X0 Y0
+X9.44 Y4.72
+
+'Inner Wall (shifted outwards by 0.25mm)
+X9.44 Y5.28
+X17.76 Y1.12
+X13.6 Y9.44
+X17.76 Y17.76
+X9.44 Y13.6
+X1.12 Y 17.76
+X5.28 Y9.44
+X1.12 Y1.12
+X9.44 Y5.28
+
+ToggleOFF
+
+G91 
+G0Z0.5
+G90
+
+ENDREPEAT
+
+
+
+'For fill - for a print that is 1.25 wide, only 1 bead per side, and a .25 gap in the center for 'filling
+REPEAT 3
+
+'Outer walls
+X9.44 Y4.72
+TOGGLE ON
+X18.88 Y0
+X14.16 Y9.44
+X18.88 Y18.88
+X9.44 Y14.16
+X0 Y18.88
+X4.72 Y9.44
+X0 Y0
+X9.44 Y4.72
+
+'Centerline
+X9.44 Y5.14
+X18.04 Y0.84
+X13.74 Y9.44
+X18.04 Y18.04
+X9.44 Y13.74
+X0.84 Y18.04
+X5.14 Y9.44
+X0.84 Y0.84
+X9.44 Y5.14
+
+'Inner Wall
+X9.44 Y5.56
+X17.2 Y1.68
+X13.32 Y9.44
+X17.2 Y17.2
+X9.44 Y13.32
+X1.68 Y17.2
+X9.44 Y13.32
+X1.68 Y17.2
+X5.56 Y9.44
+X1.68 Y1.68
+X9.44 Y5.56
+
+ToggleOFF
+
+G91 
+G0Z0.5
+G90
+
+ENDREPEAT

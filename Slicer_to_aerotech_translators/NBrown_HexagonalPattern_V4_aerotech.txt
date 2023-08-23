@@ -1,3736 +1,0 @@
-DVAR $hFile
-DVAR $cCheck
-DVAR $press
-DVAR $length
-DVAR $lame
-DVAR $comport
-DVAR $COM5
-DVAR $linepressure5
-
-
-G71
-G76
-G91 ;G90 = absolute, G91 = relative
-G68
-
-RAMP TYPE SINE X Y
-VELOCITY OFF
-RAMP RATE 900
-
-$linepressure5 = 20.0000
-CALL setPress5 P$COM5 Q$linepressure5
-
-ENABLE X Y D
-'HOME X Y D
-G90
-G0 D-80 F60
-G0 X0 Y0 D0 F60
-G91
-
-;Begin Motion
-'G0 X150 Y50 F60
-G0 D-149.5 F60
-G1 F20
-
-FILECLOSE
-$hFile = FILEOPEN "COM5", 2
-COMMINIT $hFile, "baud=115200 parity=N data=8 stop=1"
-COMMSETTIMEOUT $hFile, -1, -1, 1000
-
-;FILEWRITE $hFile"\x05\x02\x30\x38\x50\x53\x20\x20\x30\x33\x34\x30\x45\x45\x03"
-
-G90 ; use absolute coordinates 
-G1 D-149.500 ;not extruding 
-G1 X42.219 Y82.369 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.372 Y82.369 ;extruding 
-G1 X68.372 Y97.472 ;extruding 
-G1 X55.296 Y105.022 ;extruding 
-G1 X42.219 Y97.472 ;extruding 
-G1 X42.219 Y82.456 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.612 Y82.762 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X67.979 Y82.762 ;extruding 
-G1 X67.979 Y97.245 ;extruding 
-G1 X55.296 Y104.568 ;extruding 
-G1 X42.612 Y97.245 ;extruding 
-G1 X42.612 Y82.849 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.511 Y82.191 ;not extruding 
-G1 X41.646 Y79.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.995 Y56.012 ;extruding 
-G1 X41.646 Y32.369 ;extruding 
-G1 X68.946 Y32.369 ;extruding 
-G1 X82.596 Y56.012 ;extruding 
-G1 X68.946 Y79.654 ;extruding 
-G1 X41.733 Y79.654 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.872 Y79.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.449 Y56.012 ;extruding 
-G1 X41.872 Y32.762 ;extruding 
-G1 X68.719 Y32.762 ;extruding 
-G1 X82.142 Y56.012 ;extruding 
-G1 X68.719 Y79.262 ;extruding 
-G1 X41.959 Y79.262 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.370 Y79.552 ;not extruding 
-G1 X25.931 Y54.158 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.852 Y46.606 ;extruding 
-G1 X12.852 Y31.507 ;extruding 
-G1 X25.928 Y23.957 ;extruding 
-G1 X39.008 Y31.509 ;extruding 
-G1 X25.975 Y54.082 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.788 Y53.621 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.244 Y46.379 ;extruding 
-G1 X13.244 Y31.733 ;extruding 
-G1 X25.928 Y24.410 ;extruding 
-G1 X38.471 Y31.652 ;extruding 
-G1 X25.831 Y53.546 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.588 Y54.166 ;not extruding 
-G1 X26.312 Y54.213 ;not extruding 
-G1 X71.345 Y31.811 ;not extruding 
-G1 X71.584 Y31.509 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.663 Y23.957 ;extruding 
-G1 X97.740 Y31.507 ;extruding 
-G1 X97.740 Y46.606 ;extruding 
-G1 X84.660 Y54.158 ;extruding 
-G1 X71.627 Y31.584 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X72.120 Y31.652 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.663 Y24.410 ;extruding 
-G1 X97.347 Y31.733 ;extruding 
-G1 X97.347 Y46.379 ;extruding 
-G1 X84.804 Y53.621 ;extruding 
-G1 X72.163 Y31.728 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.748 Y31.207 ;not extruding 
-G1 X71.345 Y31.811 ;not extruding 
-G1 X97.954 Y31.383 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.954 Y46.730 ;extruding 
-G1 X83.967 Y54.806 ;extruding 
-G1 X83.080 Y55.602 ;extruding 
-G1 X68.833 Y80.279 ;extruding 
-G1 X68.587 Y81.445 ;extruding 
-G1 X68.587 Y97.596 ;extruding 
-G1 X55.296 Y105.270 ;extruding 
-G1 X42.005 Y97.596 ;extruding 
-G1 X42.005 Y81.445 ;extruding 
-G1 X41.758 Y80.279 ;extruding 
-G1 X27.511 Y55.602 ;extruding 
-G1 X26.625 Y54.806 ;extruding 
-G1 X12.637 Y46.730 ;extruding 
-G1 X12.637 Y31.383 ;extruding 
-G1 X25.928 Y23.709 ;extruding 
-G1 X39.916 Y31.785 ;extruding 
-G1 X41.048 Y32.154 ;extruding 
-G1 X69.543 Y32.154 ;extruding 
-G1 X70.676 Y31.785 ;extruding 
-G1 X84.663 Y23.709 ;extruding 
-G1 X97.879 Y31.339 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X98.347 Y31.156 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X98.347 Y46.957 ;extruding 
-G1 X84.199 Y55.125 ;extruding 
-G1 X83.389 Y55.852 ;extruding 
-G1 X69.204 Y80.421 ;extruding 
-G1 X68.979 Y81.486 ;extruding 
-G1 X68.979 Y97.823 ;extruding 
-G1 X55.296 Y105.723 ;extruding 
-G1 X41.612 Y97.823 ;extruding 
-G1 X41.612 Y81.486 ;extruding 
-G1 X41.387 Y80.421 ;extruding 
-G1 X27.202 Y55.852 ;extruding 
-G1 X26.393 Y55.125 ;extruding 
-G1 X12.244 Y46.957 ;extruding 
-G1 X12.244 Y31.156 ;extruding 
-G1 X25.928 Y23.256 ;extruding 
-G1 X40.077 Y31.424 ;extruding 
-G1 X41.111 Y31.762 ;extruding 
-G1 X69.481 Y31.762 ;extruding 
-G1 X70.515 Y31.424 ;extruding 
-G1 X84.663 Y23.256 ;extruding 
-G1 X98.272 Y31.113 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X97.974 Y31.600 ;not extruding 
-G1 X71.345 Y31.811 ;not extruding 
-G1 X70.949 Y33.124 ;not extruding 
-G1 X82.944 Y53.900 ;not extruding 
-G1 X84.231 Y54.200 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.026 Y53.845 ;extruding 
-G1 X82.614 Y55.257 ;extruding 
-G1 X82.409 Y54.902 ;extruding 
-G1 X83.821 Y53.490 ;extruding 
-G1 X83.616 Y53.135 ;extruding 
-G1 X82.204 Y54.547 ;extruding 
-G1 X81.999 Y54.193 ;extruding 
-G1 X83.411 Y52.780 ;extruding 
-G1 X83.206 Y52.425 ;extruding 
-G1 X81.794 Y53.838 ;extruding 
-G1 X81.589 Y53.483 ;extruding 
-G1 X83.002 Y52.071 ;extruding 
-G1 X82.797 Y51.716 ;extruding 
-G1 X81.384 Y53.128 ;extruding 
-G1 X81.180 Y52.773 ;extruding 
-G1 X82.592 Y51.361 ;extruding 
-G1 X82.387 Y51.006 ;extruding 
-G1 X80.975 Y52.418 ;extruding 
-G1 X80.770 Y52.064 ;extruding 
-G1 X82.182 Y50.651 ;extruding 
-G1 X81.977 Y50.296 ;extruding 
-G1 X80.565 Y51.709 ;extruding 
-G1 X80.360 Y51.354 ;extruding 
-G1 X81.772 Y49.942 ;extruding 
-G1 X81.568 Y49.587 ;extruding 
-G1 X80.155 Y50.999 ;extruding 
-G1 X79.950 Y50.644 ;extruding 
-G1 X81.363 Y49.232 ;extruding 
-G1 X81.158 Y48.877 ;extruding 
-G1 X79.746 Y50.289 ;extruding 
-G1 X79.541 Y49.935 ;extruding 
-G1 X80.953 Y48.522 ;extruding 
-G1 X80.748 Y48.167 ;extruding 
-G1 X79.336 Y49.580 ;extruding 
-G1 X79.131 Y49.225 ;extruding 
-G1 X80.543 Y47.813 ;extruding 
-G1 X80.338 Y47.458 ;extruding 
-G1 X78.926 Y48.870 ;extruding 
-G1 X78.721 Y48.515 ;extruding 
-G1 X80.133 Y47.103 ;extruding 
-G1 X79.929 Y46.748 ;extruding 
-G1 X78.516 Y48.160 ;extruding 
-G1 X78.311 Y47.805 ;extruding 
-G1 X79.724 Y46.393 ;extruding 
-G1 X79.519 Y46.038 ;extruding 
-G1 X78.107 Y47.451 ;extruding 
-G1 X77.902 Y47.096 ;extruding 
-G1 X79.314 Y45.684 ;extruding 
-G1 X79.109 Y45.329 ;extruding 
-G1 X77.697 Y46.741 ;extruding 
-G1 X77.492 Y46.386 ;extruding 
-G1 X78.904 Y44.974 ;extruding 
-G1 X78.699 Y44.619 ;extruding 
-G1 X77.287 Y46.031 ;extruding 
-G1 X77.082 Y45.676 ;extruding 
-G1 X78.495 Y44.264 ;extruding 
-G1 X78.290 Y43.909 ;extruding 
-G1 X76.877 Y45.322 ;extruding 
-G1 X76.673 Y44.967 ;extruding 
-G1 X78.085 Y43.554 ;extruding 
-G1 X77.880 Y43.200 ;extruding 
-G1 X76.468 Y44.612 ;extruding 
-G1 X76.263 Y44.257 ;extruding 
-G1 X77.675 Y42.845 ;extruding 
-G1 X77.470 Y42.490 ;extruding 
-G1 X76.058 Y43.902 ;extruding 
-G1 X75.853 Y43.547 ;extruding 
-G1 X77.265 Y42.135 ;extruding 
-G1 X77.060 Y41.780 ;extruding 
-G1 X75.648 Y43.193 ;extruding 
-G1 X75.443 Y42.838 ;extruding 
-G1 X76.856 Y41.425 ;extruding 
-G1 X76.651 Y41.071 ;extruding 
-G1 X75.238 Y42.483 ;extruding 
-G1 X75.034 Y42.128 ;extruding 
-G1 X76.446 Y40.716 ;extruding 
-G1 X76.241 Y40.361 ;extruding 
-G1 X74.829 Y41.773 ;extruding 
-G1 X74.624 Y41.418 ;extruding 
-G1 X76.036 Y40.006 ;extruding 
-G1 X75.831 Y39.651 ;extruding 
-G1 X74.419 Y41.063 ;extruding 
-G1 X74.214 Y40.709 ;extruding 
-G1 X75.626 Y39.296 ;extruding 
-G1 X75.422 Y38.942 ;extruding 
-G1 X74.009 Y40.354 ;extruding 
-G1 X73.804 Y39.999 ;extruding 
-G1 X75.217 Y38.587 ;extruding 
-G1 X75.012 Y38.232 ;extruding 
-G1 X73.600 Y39.644 ;extruding 
-G1 X73.395 Y39.289 ;extruding 
-G1 X74.807 Y37.877 ;extruding 
-G1 X74.602 Y37.522 ;extruding 
-G1 X73.190 Y38.934 ;extruding 
-G1 X72.985 Y38.580 ;extruding 
-G1 X74.397 Y37.167 ;extruding 
-G1 X74.192 Y36.812 ;extruding 
-G1 X72.780 Y38.225 ;extruding 
-G1 X72.575 Y37.870 ;extruding 
-G1 X73.987 Y36.458 ;extruding 
-G1 X73.783 Y36.103 ;extruding 
-G1 X72.370 Y37.515 ;extruding 
-G1 X72.165 Y37.160 ;extruding 
-G1 X73.578 Y35.748 ;extruding 
-G1 X73.373 Y35.393 ;extruding 
-G1 X71.961 Y36.805 ;extruding 
-G1 X71.756 Y36.451 ;extruding 
-G1 X73.168 Y35.038 ;extruding 
-G1 X72.963 Y34.683 ;extruding 
-G1 X71.551 Y36.096 ;extruding 
-G1 X71.346 Y35.741 ;extruding 
-G1 X72.758 Y34.329 ;extruding 
-G1 X72.553 Y33.974 ;extruding 
-G1 X71.141 Y35.386 ;extruding 
-G1 X70.936 Y35.031 ;extruding 
-G1 X72.349 Y33.619 ;extruding 
-G1 X72.144 Y33.264 ;extruding 
-G1 X70.731 Y34.676 ;extruding 
-G1 X70.526 Y34.322 ;extruding 
-G1 X71.939 Y32.909 ;extruding 
-G1 X71.734 Y32.554 ;extruding 
-G1 X70.322 Y33.967 ;extruding 
-G1 X70.117 Y33.612 ;extruding 
-G1 X71.529 Y32.200 ;extruding 
-G1 X71.333 Y31.859 ;extruding 
-G1 X71.279 Y31.890 ;extruding 
-G1 X69.912 Y33.257 ;extruding 
-G1 X69.707 Y32.902 ;extruding 
-G1 X70.283 Y32.326 ;extruding 
-G1 X69.605 Y32.547 ;extruding 
-G1 X69.502 Y32.547 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.259 Y31.859 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.627 Y32.072 ;extruding 
-G1 X38.465 Y33.233 ;extruding 
-G1 X37.672 Y34.607 ;extruding 
-G1 X40.041 Y32.239 ;extruding 
-G1 X40.479 Y32.382 ;extruding 
-G1 X36.879 Y35.981 ;extruding 
-G1 X36.086 Y37.355 ;extruding 
-G1 X40.916 Y32.524 ;extruding 
-G1 X40.986 Y32.547 ;extruding 
-G1 X41.089 Y32.547 ;extruding 
-G1 X40.563 Y33.458 ;extruding 
-G1 X35.293 Y38.729 ;extruding 
-G1 X34.499 Y40.103 ;extruding 
-G1 X39.770 Y34.832 ;extruding 
-G1 X38.977 Y36.206 ;extruding 
-G1 X33.706 Y41.477 ;extruding 
-G1 X32.913 Y42.851 ;extruding 
-G1 X38.184 Y37.580 ;extruding 
-G1 X37.390 Y38.954 ;extruding 
-G1 X32.120 Y44.225 ;extruding 
-G1 X31.326 Y45.598 ;extruding 
-G1 X36.597 Y40.328 ;extruding 
-G1 X35.804 Y41.702 ;extruding 
-G1 X30.533 Y46.972 ;extruding 
-G1 X29.740 Y48.346 ;extruding 
-G1 X35.011 Y43.076 ;extruding 
-G1 X34.218 Y44.449 ;extruding 
-G1 X28.947 Y49.720 ;extruding 
-G1 X28.154 Y51.094 ;extruding 
-G1 X33.424 Y45.823 ;extruding 
-G1 X32.631 Y47.197 ;extruding 
-G1 X27.360 Y52.468 ;extruding 
-G1 X26.567 Y53.842 ;extruding 
-G1 X31.838 Y48.571 ;extruding 
-G1 X31.045 Y49.945 ;extruding 
-G1 X26.633 Y54.357 ;extruding 
-G1 X26.857 Y54.486 ;extruding 
-G1 X26.976 Y54.594 ;extruding 
-G1 X30.251 Y51.319 ;extruding 
-G1 X29.458 Y52.693 ;extruding 
-G1 X27.282 Y54.869 ;extruding 
-G1 X27.588 Y55.143 ;extruding 
-G1 X28.665 Y54.067 ;extruding 
-G1 X27.871 Y55.441 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.078 Y80.047 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.130 Y80.137 ;extruding 
-G1 X42.203 Y80.483 ;extruding 
-G1 X42.639 Y80.047 ;extruding 
-G1 X43.200 Y80.047 ;extruding 
-G1 X42.301 Y80.946 ;extruding 
-G1 X42.397 Y81.411 ;extruding 
-G1 X43.761 Y80.047 ;extruding 
-G1 X44.322 Y80.047 ;extruding 
-G1 X42.397 Y81.976 ;extruding 
-G1 X42.953 Y81.976 ;extruding 
-G1 X44.883 Y80.047 ;extruding 
-G1 X45.443 Y80.047 ;extruding 
-G1 X43.514 Y81.976 ;extruding 
-G1 X44.075 Y81.976 ;extruding 
-G1 X46.004 Y80.047 ;extruding 
-G1 X46.565 Y80.047 ;extruding 
-G1 X44.636 Y81.976 ;extruding 
-G1 X45.197 Y81.976 ;extruding 
-G1 X47.126 Y80.047 ;extruding 
-G1 X47.687 Y80.047 ;extruding 
-G1 X45.758 Y81.976 ;extruding 
-G1 X46.319 Y81.976 ;extruding 
-G1 X48.248 Y80.047 ;extruding 
-G1 X48.809 Y80.047 ;extruding 
-G1 X46.880 Y81.976 ;extruding 
-G1 X47.441 Y81.976 ;extruding 
-G1 X49.370 Y80.047 ;extruding 
-G1 X49.931 Y80.047 ;extruding 
-G1 X48.001 Y81.976 ;extruding 
-G1 X48.562 Y81.976 ;extruding 
-G1 X50.492 Y80.047 ;extruding 
-G1 X51.053 Y80.047 ;extruding 
-G1 X49.123 Y81.976 ;extruding 
-G1 X49.684 Y81.976 ;extruding 
-G1 X51.613 Y80.047 ;extruding 
-G1 X52.174 Y80.047 ;extruding 
-G1 X50.245 Y81.976 ;extruding 
-G1 X50.806 Y81.976 ;extruding 
-G1 X52.735 Y80.047 ;extruding 
-G1 X53.296 Y80.047 ;extruding 
-G1 X51.367 Y81.976 ;extruding 
-G1 X51.928 Y81.976 ;extruding 
-G1 X53.857 Y80.047 ;extruding 
-G1 X54.418 Y80.047 ;extruding 
-G1 X52.489 Y81.976 ;extruding 
-G1 X53.050 Y81.976 ;extruding 
-G1 X54.979 Y80.047 ;extruding 
-G1 X55.540 Y80.047 ;extruding 
-G1 X53.610 Y81.976 ;extruding 
-G1 X54.171 Y81.976 ;extruding 
-G1 X56.101 Y80.047 ;extruding 
-G1 X56.662 Y80.047 ;extruding 
-G1 X54.732 Y81.976 ;extruding 
-G1 X55.293 Y81.976 ;extruding 
-G1 X57.222 Y80.047 ;extruding 
-G1 X57.783 Y80.047 ;extruding 
-G1 X55.854 Y81.976 ;extruding 
-G1 X56.415 Y81.976 ;extruding 
-G1 X58.344 Y80.047 ;extruding 
-G1 X58.905 Y80.047 ;extruding 
-G1 X56.976 Y81.976 ;extruding 
-G1 X57.537 Y81.976 ;extruding 
-G1 X59.466 Y80.047 ;extruding 
-G1 X60.027 Y80.047 ;extruding 
-G1 X58.098 Y81.976 ;extruding 
-G1 X58.659 Y81.976 ;extruding 
-G1 X60.588 Y80.047 ;extruding 
-G1 X61.149 Y80.047 ;extruding 
-G1 X59.220 Y81.976 ;extruding 
-G1 X59.780 Y81.976 ;extruding 
-G1 X61.710 Y80.047 ;extruding 
-G1 X62.271 Y80.047 ;extruding 
-G1 X60.341 Y81.976 ;extruding 
-G1 X60.902 Y81.976 ;extruding 
-G1 X62.831 Y80.047 ;extruding 
-G1 X63.392 Y80.047 ;extruding 
-G1 X61.463 Y81.976 ;extruding 
-G1 X62.024 Y81.976 ;extruding 
-G1 X63.953 Y80.047 ;extruding 
-G1 X64.514 Y80.047 ;extruding 
-G1 X62.585 Y81.976 ;extruding 
-G1 X63.146 Y81.976 ;extruding 
-G1 X65.075 Y80.047 ;extruding 
-G1 X65.636 Y80.047 ;extruding 
-G1 X63.707 Y81.976 ;extruding 
-G1 X64.268 Y81.976 ;extruding 
-G1 X66.197 Y80.047 ;extruding 
-G1 X66.758 Y80.047 ;extruding 
-G1 X64.829 Y81.976 ;extruding 
-G1 X65.389 Y81.976 ;extruding 
-G1 X67.319 Y80.047 ;extruding 
-G1 X67.880 Y80.047 ;extruding 
-G1 X65.950 Y81.976 ;extruding 
-G1 X66.511 Y81.976 ;extruding 
-G1 X68.440 Y80.047 ;extruding 
-G1 X68.513 Y80.047 ;extruding 
-G1 X68.462 Y80.137 ;extruding 
-G1 X68.341 Y80.707 ;extruding 
-G1 X67.072 Y81.976 ;extruding 
-G1 X67.633 Y81.976 ;extruding 
-G1 X68.194 Y81.415 ;extruding 
-G1 X68.194 Y81.976 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.229 Y99.122 ;not extruding 
-G1 X71.087 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.949 Y89.634 ;extruding 
-G1 X71.087 Y95.905 ;extruding 
-G1 X71.087 Y83.450 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.163 Y89.634 ;extruding 
-G1 X71.479 Y95.225 ;extruding 
-G1 X71.479 Y84.130 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y83.463 ;not extruding 
-G1 X71.584 Y80.515 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.660 Y57.866 ;extruding 
-G1 X97.740 Y65.417 ;extruding 
-G1 X97.740 Y80.517 ;extruding 
-G1 X84.663 Y88.067 ;extruding 
-G1 X71.659 Y80.558 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X72.120 Y80.371 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.804 Y58.402 ;extruding 
-G1 X97.347 Y65.644 ;extruding 
-G1 X97.347 Y80.290 ;extruding 
-G1 X84.663 Y87.613 ;extruding 
-G1 X72.195 Y80.415 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.575 Y80.173 ;not extruding 
-G1 X71.528 Y80.896 ;not extruding 
-G1 X84.962 Y57.628 ;not extruding 
-G1 X86.663 Y57.455 ;not extruding 
-G1 X86.663 Y56.300 ;not extruding 
-G1 X86.878 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.740 Y49.741 ;extruding 
-G1 X97.740 Y62.283 ;extruding 
-G1 X86.953 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X87.663 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.347 Y50.421 ;extruding 
-G1 X97.347 Y61.603 ;extruding 
-G1 X87.739 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X88.166 Y55.722 ;not extruding 
-G1 X97.954 Y49.369 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.954 Y80.641 ;extruding 
-G1 X70.872 Y96.277 ;extruding 
-G1 X70.872 Y81.933 ;extruding 
-G1 X71.026 Y81.051 ;extruding 
-G1 X84.846 Y57.115 ;extruding 
-G1 X85.533 Y56.541 ;extruding 
-G1 X97.879 Y49.412 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X98.347 Y48.689 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X98.347 Y80.867 ;extruding 
-G1 X70.479 Y96.957 ;extruding 
-G1 X70.479 Y81.899 ;extruding 
-G1 X70.651 Y80.915 ;extruding 
-G1 X84.541 Y56.858 ;extruding 
-G1 X85.307 Y56.217 ;extruding 
-G1 X98.272 Y48.732 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X98.151 Y49.235 ;not extruding 
-G1 X85.152 Y57.371 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X85.759 Y56.864 ;extruding 
-G1 X86.663 Y56.341 ;extruding 
-G1 X86.718 Y56.373 ;extruding 
-G1 X85.306 Y57.785 ;extruding 
-G1 X85.666 Y57.993 ;extruding 
-G1 X87.079 Y56.581 ;extruding 
-G1 X87.439 Y56.789 ;extruding 
-G1 X86.027 Y58.202 ;extruding 
-G1 X86.387 Y58.410 ;extruding 
-G1 X87.800 Y56.997 ;extruding 
-G1 X88.160 Y57.206 ;extruding 
-G1 X86.748 Y58.618 ;extruding 
-G1 X87.108 Y58.826 ;extruding 
-G1 X88.520 Y57.414 ;extruding 
-G1 X88.881 Y57.622 ;extruding 
-G1 X87.469 Y59.034 ;extruding 
-G1 X87.829 Y59.242 ;extruding 
-G1 X89.241 Y57.830 ;extruding 
-G1 X89.602 Y58.038 ;extruding 
-G1 X88.190 Y59.450 ;extruding 
-G1 X88.550 Y59.658 ;extruding 
-G1 X89.962 Y58.246 ;extruding 
-G1 X90.323 Y58.454 ;extruding 
-G1 X88.910 Y59.866 ;extruding 
-G1 X89.271 Y60.075 ;extruding 
-G1 X90.683 Y58.662 ;extruding 
-G1 X91.044 Y58.870 ;extruding 
-G1 X89.631 Y60.283 ;extruding 
-G1 X89.992 Y60.491 ;extruding 
-G1 X91.404 Y59.078 ;extruding 
-G1 X91.765 Y59.287 ;extruding 
-G1 X90.352 Y60.699 ;extruding 
-G1 X90.713 Y60.907 ;extruding 
-G1 X92.125 Y59.495 ;extruding 
-G1 X92.486 Y59.703 ;extruding 
-G1 X91.073 Y61.115 ;extruding 
-G1 X91.434 Y61.323 ;extruding 
-G1 X92.846 Y59.911 ;extruding 
-G1 X93.206 Y60.119 ;extruding 
-G1 X91.794 Y61.531 ;extruding 
-G1 X92.155 Y61.739 ;extruding 
-G1 X93.567 Y60.327 ;extruding 
-G1 X93.927 Y60.535 ;extruding 
-G1 X92.515 Y61.948 ;extruding 
-G1 X92.876 Y62.156 ;extruding 
-G1 X94.288 Y60.743 ;extruding 
-G1 X94.648 Y60.951 ;extruding 
-G1 X93.236 Y62.364 ;extruding 
-G1 X93.596 Y62.572 ;extruding 
-G1 X95.009 Y61.160 ;extruding 
-G1 X95.369 Y61.368 ;extruding 
-G1 X93.957 Y62.780 ;extruding 
-G1 X94.317 Y62.988 ;extruding 
-G1 X95.730 Y61.576 ;extruding 
-G1 X96.090 Y61.784 ;extruding 
-G1 X94.678 Y63.196 ;extruding 
-G1 X95.038 Y63.404 ;extruding 
-G1 X96.451 Y61.992 ;extruding 
-G1 X96.811 Y62.200 ;extruding 
-G1 X95.399 Y63.612 ;extruding 
-G1 X95.759 Y63.821 ;extruding 
-G1 X97.171 Y62.408 ;extruding 
-G1 X97.532 Y62.616 ;extruding 
-G1 X96.120 Y64.029 ;extruding 
-G1 X96.480 Y64.237 ;extruding 
-G1 X97.562 Y63.155 ;extruding 
-G1 X97.562 Y63.724 ;extruding 
-G1 X96.841 Y64.445 ;extruding 
-G1 X97.201 Y64.653 ;extruding 
-G1 X97.562 Y64.292 ;extruding 
-G1 X97.561 Y64.861 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X96.597 Y63.190 ;not extruding 
-G1 X86.663 Y57.455 ;not extruding 
-G1 X84.962 Y57.628 ;not extruding 
-G1 X71.528 Y80.896 ;not extruding 
-G1 X72.229 Y82.455 ;not extruding 
-G1 X82.163 Y88.190 ;not extruding 
-G1 X84.092 Y88.191 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X83.734 Y87.983 ;extruding 
-G1 X82.754 Y88.963 ;extruding 
-G1 X82.163 Y89.304 ;extruding 
-G1 X81.963 Y89.189 ;extruding 
-G1 X83.375 Y87.776 ;extruding 
-G1 X83.017 Y87.569 ;extruding 
-G1 X81.604 Y88.982 ;extruding 
-G1 X81.246 Y88.775 ;extruding 
-G1 X82.658 Y87.362 ;extruding 
-G1 X82.299 Y87.155 ;extruding 
-G1 X80.887 Y88.567 ;extruding 
-G1 X80.528 Y88.360 ;extruding 
-G1 X81.941 Y86.948 ;extruding 
-G1 X81.582 Y86.741 ;extruding 
-G1 X80.170 Y88.153 ;extruding 
-G1 X79.811 Y87.946 ;extruding 
-G1 X81.224 Y86.534 ;extruding 
-G1 X80.865 Y86.327 ;extruding 
-G1 X79.453 Y87.739 ;extruding 
-G1 X79.094 Y87.532 ;extruding 
-G1 X80.506 Y86.120 ;extruding 
-G1 X80.148 Y85.913 ;extruding 
-G1 X78.736 Y87.325 ;extruding 
-G1 X78.377 Y87.118 ;extruding 
-G1 X79.789 Y85.706 ;extruding 
-G1 X79.431 Y85.499 ;extruding 
-G1 X78.018 Y86.911 ;extruding 
-G1 X77.660 Y86.704 ;extruding 
-G1 X79.072 Y85.292 ;extruding 
-G1 X78.713 Y85.085 ;extruding 
-G1 X77.301 Y86.497 ;extruding 
-G1 X76.943 Y86.290 ;extruding 
-G1 X78.355 Y84.878 ;extruding 
-G1 X77.996 Y84.671 ;extruding 
-G1 X76.584 Y86.083 ;extruding 
-G1 X76.225 Y85.876 ;extruding 
-G1 X77.638 Y84.464 ;extruding 
-G1 X77.279 Y84.257 ;extruding 
-G1 X75.867 Y85.669 ;extruding 
-G1 X75.508 Y85.462 ;extruding 
-G1 X76.920 Y84.050 ;extruding 
-G1 X76.562 Y83.843 ;extruding 
-G1 X75.150 Y85.255 ;extruding 
-G1 X74.791 Y85.048 ;extruding 
-G1 X76.203 Y83.636 ;extruding 
-G1 X75.845 Y83.429 ;extruding 
-G1 X74.432 Y84.841 ;extruding 
-G1 X74.074 Y84.634 ;extruding 
-G1 X75.486 Y83.222 ;extruding 
-G1 X75.127 Y83.014 ;extruding 
-G1 X73.715 Y84.427 ;extruding 
-G1 X73.357 Y84.220 ;extruding 
-G1 X74.769 Y82.807 ;extruding 
-G1 X74.410 Y82.600 ;extruding 
-G1 X72.998 Y84.013 ;extruding 
-G1 X72.639 Y83.806 ;extruding 
-G1 X74.052 Y82.393 ;extruding 
-G1 X73.693 Y82.186 ;extruding 
-G1 X72.281 Y83.599 ;extruding 
-G1 X71.922 Y83.392 ;extruding 
-G1 X73.335 Y81.979 ;extruding 
-G1 X72.976 Y81.772 ;extruding 
-G1 X71.564 Y83.185 ;extruding 
-G1 X71.265 Y83.012 ;extruding 
-G1 X71.265 Y82.918 ;extruding 
-G1 X72.617 Y81.565 ;extruding 
-G1 X72.259 Y81.358 ;extruding 
-G1 X71.265 Y82.352 ;extruding 
-G1 X71.265 Y81.967 ;extruding 
-G1 X71.303 Y81.748 ;extruding 
-G1 X71.900 Y81.151 ;extruding 
-G1 X71.542 Y80.944 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.362 Y99.122 ;not extruding 
-G1 X39.505 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.505 Y95.905 ;extruding 
-G1 X28.643 Y89.634 ;extruding 
-G1 X39.429 Y83.406 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.112 Y95.225 ;extruding 
-G1 X29.428 Y89.634 ;extruding 
-G1 X39.037 Y84.086 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.683 Y83.942 ;not extruding 
-G1 X39.008 Y80.515 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.928 Y88.067 ;extruding 
-G1 X12.852 Y80.517 ;extruding 
-G1 X12.852 Y65.417 ;extruding 
-G1 X25.931 Y57.866 ;extruding 
-G1 X38.964 Y80.440 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.471 Y80.371 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.928 Y87.613 ;extruding 
-G1 X13.244 Y80.290 ;extruding 
-G1 X13.244 Y65.644 ;extruding 
-G1 X25.788 Y58.402 ;extruding 
-G1 X38.428 Y80.296 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.837 Y80.821 ;not extruding 
-G1 X39.063 Y80.896 ;not extruding 
-G1 X25.629 Y57.628 ;not extruding 
-G1 X23.928 Y57.455 ;not extruding 
-G1 X23.928 Y56.300 ;not extruding 
-G1 X23.714 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.852 Y62.283 ;extruding 
-G1 X12.852 Y49.741 ;extruding 
-G1 X23.638 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X22.928 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.244 Y61.603 ;extruding 
-G1 X13.244 Y50.421 ;extruding 
-G1 X22.853 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X23.430 Y56.302 ;not extruding 
-G1 X12.637 Y49.369 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.059 Y56.541 ;extruding 
-G1 X25.746 Y57.115 ;extruding 
-G1 X39.565 Y81.051 ;extruding 
-G1 X39.719 Y81.933 ;extruding 
-G1 X39.719 Y96.277 ;extruding 
-G1 X12.637 Y80.641 ;extruding 
-G1 X12.637 Y49.456 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X12.244 Y48.689 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.284 Y56.217 ;extruding 
-G1 X26.051 Y56.858 ;extruding 
-G1 X39.940 Y80.915 ;extruding 
-G1 X40.112 Y81.899 ;extruding 
-G1 X40.112 Y96.957 ;extruding 
-G1 X12.244 Y80.867 ;extruding 
-G1 X12.244 Y48.776 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X12.689 Y49.062 ;not extruding 
-G1 X13.030 Y62.633 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X14.401 Y61.842 ;extruding 
-G1 X13.030 Y63.213 ;extruding 
-G1 X13.030 Y63.792 ;extruding 
-G1 X15.772 Y61.050 ;extruding 
-G1 X17.143 Y60.259 ;extruding 
-G1 X13.030 Y64.372 ;extruding 
-G1 X13.030 Y64.861 ;extruding 
-G1 X13.243 Y64.738 ;extruding 
-G1 X18.514 Y59.467 ;extruding 
-G1 X19.884 Y58.676 ;extruding 
-G1 X14.614 Y63.947 ;extruding 
-G1 X15.985 Y63.155 ;extruding 
-G1 X21.255 Y57.885 ;extruding 
-G1 X22.626 Y57.093 ;extruding 
-G1 X17.355 Y62.364 ;extruding 
-G1 X18.726 Y61.572 ;extruding 
-G1 X23.947 Y56.352 ;extruding 
-G1 X24.314 Y56.564 ;extruding 
-G1 X20.097 Y60.781 ;extruding 
-G1 X21.468 Y59.989 ;extruding 
-G1 X24.681 Y56.776 ;extruding 
-G1 X24.833 Y56.864 ;extruding 
-G1 X25.018 Y57.019 ;extruding 
-G1 X22.839 Y59.198 ;extruding 
-G1 X24.210 Y58.406 ;extruding 
-G1 X25.334 Y57.282 ;extruding 
-G1 X25.440 Y57.371 ;extruding 
-G1 X25.580 Y57.615 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.063 Y80.896 ;not extruding 
-G1 X38.362 Y82.455 ;not extruding 
-G1 X39.326 Y83.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.327 Y82.424 ;extruding 
-G1 X37.934 Y83.816 ;extruding 
-G1 X36.542 Y84.620 ;extruding 
-G1 X39.307 Y81.855 ;extruding 
-G1 X39.219 Y81.354 ;extruding 
-G1 X35.150 Y85.423 ;extruding 
-G1 X33.758 Y86.227 ;extruding 
-G1 X39.028 Y80.956 ;extruding 
-G1 X37.636 Y81.760 ;extruding 
-G1 X32.366 Y87.031 ;extruding 
-G1 X30.973 Y87.835 ;extruding 
-G1 X36.244 Y82.564 ;extruding 
-G1 X34.852 Y83.368 ;extruding 
-G1 X29.581 Y88.638 ;extruding 
-G1 X28.428 Y89.304 ;extruding 
-G1 X28.364 Y89.267 ;extruding 
-G1 X33.460 Y84.171 ;extruding 
-G1 X32.068 Y84.975 ;extruding 
-G1 X27.991 Y89.052 ;extruding 
-G1 X27.618 Y88.837 ;extruding 
-G1 X30.676 Y85.779 ;extruding 
-G1 X29.284 Y86.583 ;extruding 
-G1 X27.245 Y88.621 ;extruding 
-G1 X26.872 Y88.406 ;extruding 
-G1 X27.891 Y87.386 ;extruding 
-G1 X26.499 Y88.190 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.928 Y20.658 ;not extruding 
-G1 X42.219 Y29.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.219 Y14.551 ;extruding 
-G1 X55.296 Y7.002 ;extruding 
-G1 X68.372 Y14.551 ;extruding 
-G1 X68.372 Y29.654 ;extruding 
-G1 X42.306 Y29.654 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.612 Y29.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.612 Y14.778 ;extruding 
-G1 X55.296 Y7.455 ;extruding 
-G1 X67.979 Y14.778 ;extruding 
-G1 X67.979 Y29.262 ;extruding 
-G1 X42.699 Y29.262 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.041 Y29.362 ;not extruding 
-G1 X39.505 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.643 Y22.390 ;extruding 
-G1 X39.505 Y16.119 ;extruding 
-G1 X39.505 Y28.574 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X29.428 Y22.390 ;extruding 
-G1 X39.112 Y16.799 ;extruding 
-G1 X39.112 Y27.894 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.090 Y28.560 ;not extruding 
-G1 X39.862 Y28.702 ;not extruding 
-G1 X40.862 Y28.125 ;not extruding 
-G1 X41.862 Y29.512 ;not extruding 
-G1 X68.729 Y29.512 ;not extruding 
-G1 X69.729 Y28.125 ;not extruding 
-G1 X70.729 Y28.702 ;not extruding 
-G1 X71.087 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.087 Y16.119 ;extruding 
-G1 X81.949 Y22.390 ;extruding 
-G1 X71.162 Y28.617 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.479 Y16.799 ;extruding 
-G1 X81.163 Y22.390 ;extruding 
-G1 X71.555 Y27.937 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.977 Y28.271 ;not extruding 
-G1 X82.378 Y22.390 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X69.956 Y29.561 ;extruding 
-G1 X69.116 Y29.869 ;extruding 
-G1 X41.476 Y29.869 ;extruding 
-G1 X40.635 Y29.561 ;extruding 
-G1 X28.214 Y22.390 ;extruding 
-G1 X55.296 Y6.754 ;extruding 
-G1 X82.302 Y22.346 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X83.163 Y22.390 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.123 Y29.918 ;extruding 
-G1 X69.185 Y30.262 ;extruding 
-G1 X41.406 Y30.262 ;extruding 
-G1 X40.468 Y29.918 ;extruding 
-G1 X27.428 Y22.390 ;extruding 
-G1 X55.296 Y6.300 ;extruding 
-G1 X83.088 Y22.346 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X82.592 Y22.490 ;not extruding 
-G1 X70.694 Y28.682 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.694 Y28.124 ;extruding 
-G1 X69.512 Y29.306 ;extruding 
-G1 X69.046 Y29.476 ;extruding 
-G1 X68.783 Y29.476 ;extruding 
-G1 X70.694 Y27.566 ;extruding 
-G1 X70.694 Y27.007 ;extruding 
-G1 X68.765 Y28.937 ;extruding 
-G1 X68.765 Y28.379 ;extruding 
-G1 X70.694 Y26.449 ;extruding 
-G1 X70.694 Y25.891 ;extruding 
-G1 X68.765 Y27.820 ;extruding 
-G1 X68.765 Y27.262 ;extruding 
-G1 X70.694 Y25.333 ;extruding 
-G1 X70.694 Y24.775 ;extruding 
-G1 X68.765 Y26.704 ;extruding 
-G1 X68.765 Y26.146 ;extruding 
-G1 X70.694 Y24.217 ;extruding 
-G1 X70.694 Y23.659 ;extruding 
-G1 X68.765 Y25.588 ;extruding 
-G1 X68.765 Y25.030 ;extruding 
-G1 X70.694 Y23.101 ;extruding 
-G1 X70.694 Y22.543 ;extruding 
-G1 X68.765 Y24.472 ;extruding 
-G1 X68.765 Y23.914 ;extruding 
-G1 X70.694 Y21.984 ;extruding 
-G1 X70.694 Y21.426 ;extruding 
-G1 X68.765 Y23.356 ;extruding 
-G1 X68.765 Y22.797 ;extruding 
-G1 X70.694 Y20.868 ;extruding 
-G1 X70.694 Y20.310 ;extruding 
-G1 X68.765 Y22.239 ;extruding 
-G1 X68.765 Y21.681 ;extruding 
-G1 X70.694 Y19.752 ;extruding 
-G1 X70.694 Y19.194 ;extruding 
-G1 X68.765 Y21.123 ;extruding 
-G1 X68.765 Y20.565 ;extruding 
-G1 X70.694 Y18.636 ;extruding 
-G1 X70.694 Y18.078 ;extruding 
-G1 X68.765 Y20.007 ;extruding 
-G1 X68.765 Y19.449 ;extruding 
-G1 X70.694 Y17.520 ;extruding 
-G1 X70.694 Y16.961 ;extruding 
-G1 X68.765 Y18.891 ;extruding 
-G1 X68.765 Y18.333 ;extruding 
-G1 X70.694 Y16.403 ;extruding 
-G1 X70.694 Y16.098 ;extruding 
-G1 X70.534 Y16.005 ;extruding 
-G1 X68.765 Y17.774 ;extruding 
-G1 X68.765 Y17.216 ;extruding 
-G1 X70.180 Y15.801 ;extruding 
-G1 X69.826 Y15.597 ;extruding 
-G1 X68.765 Y16.658 ;extruding 
-G1 X68.765 Y16.100 ;extruding 
-G1 X69.473 Y15.392 ;extruding 
-G1 X69.119 Y15.188 ;extruding 
-G1 X68.765 Y15.542 ;extruding 
-G1 X68.765 Y14.984 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X69.729 Y16.655 ;not extruding 
-G1 X69.729 Y28.125 ;not extruding 
-G1 X68.729 Y29.512 ;not extruding 
-G1 X41.862 Y29.512 ;not extruding 
-G1 X40.862 Y28.125 ;not extruding 
-G1 X40.862 Y16.655 ;not extruding 
-G1 X39.898 Y16.097 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.239 Y15.323 ;extruding 
-G1 X39.897 Y16.665 ;extruding 
-G1 X39.897 Y17.232 ;extruding 
-G1 X41.827 Y15.302 ;extruding 
-G1 X41.827 Y15.869 ;extruding 
-G1 X39.897 Y17.799 ;extruding 
-G1 X39.897 Y18.366 ;extruding 
-G1 X41.827 Y16.436 ;extruding 
-G1 X41.827 Y17.003 ;extruding 
-G1 X39.897 Y18.933 ;extruding 
-G1 X39.897 Y19.499 ;extruding 
-G1 X41.827 Y17.570 ;extruding 
-G1 X41.827 Y18.137 ;extruding 
-G1 X39.897 Y20.066 ;extruding 
-G1 X39.897 Y20.633 ;extruding 
-G1 X41.827 Y18.704 ;extruding 
-G1 X41.827 Y19.271 ;extruding 
-G1 X39.897 Y21.200 ;extruding 
-G1 X39.897 Y21.767 ;extruding 
-G1 X41.827 Y19.838 ;extruding 
-G1 X41.827 Y20.405 ;extruding 
-G1 X39.897 Y22.334 ;extruding 
-G1 X39.897 Y22.901 ;extruding 
-G1 X41.827 Y20.972 ;extruding 
-G1 X41.827 Y21.539 ;extruding 
-G1 X39.897 Y23.468 ;extruding 
-G1 X39.897 Y24.035 ;extruding 
-G1 X41.827 Y22.106 ;extruding 
-G1 X41.827 Y22.673 ;extruding 
-G1 X39.897 Y24.602 ;extruding 
-G1 X39.897 Y25.169 ;extruding 
-G1 X41.827 Y23.240 ;extruding 
-G1 X41.827 Y23.807 ;extruding 
-G1 X39.897 Y25.736 ;extruding 
-G1 X39.897 Y26.303 ;extruding 
-G1 X41.827 Y24.374 ;extruding 
-G1 X41.827 Y24.941 ;extruding 
-G1 X39.897 Y26.870 ;extruding 
-G1 X39.897 Y27.437 ;extruding 
-G1 X41.827 Y25.508 ;extruding 
-G1 X41.827 Y26.075 ;extruding 
-G1 X39.897 Y28.004 ;extruding 
-G1 X39.897 Y28.571 ;extruding 
-G1 X41.827 Y26.641 ;extruding 
-G1 X41.827 Y27.208 ;extruding 
-G1 X40.186 Y28.849 ;extruding 
-G1 X40.546 Y29.056 ;extruding 
-G1 X41.827 Y27.775 ;extruding 
-G1 X41.827 Y28.342 ;extruding 
-G1 X40.921 Y29.248 ;extruding 
-G1 X41.336 Y29.400 ;extruding 
-G1 X41.827 Y28.909 ;extruding 
-G1 X41.826 Y29.476 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 D-149.000 ;not extruding 
-G1 X39.362 Y99.122 ;not extruding 
-G1 X68.372 Y82.369 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.372 Y97.472 ;extruding 
-G1 X55.296 Y105.022 ;extruding 
-G1 X42.219 Y97.472 ;extruding 
-G1 X42.219 Y82.369 ;extruding 
-G1 X68.285 Y82.369 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X67.979 Y82.762 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X67.979 Y97.245 ;extruding 
-G1 X55.296 Y104.568 ;extruding 
-G1 X42.612 Y97.245 ;extruding 
-G1 X42.612 Y82.762 ;extruding 
-G1 X67.892 Y82.762 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.551 Y82.662 ;not extruding 
-G1 X68.587 Y82.154 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.587 Y97.596 ;extruding 
-G1 X55.296 Y105.270 ;extruding 
-G1 X42.005 Y97.596 ;extruding 
-G1 X42.005 Y82.154 ;extruding 
-G1 X68.500 Y82.154 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.979 Y81.762 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.979 Y97.823 ;extruding 
-G1 X55.296 Y105.723 ;extruding 
-G1 X41.612 Y97.823 ;extruding 
-G1 X41.612 Y81.762 ;extruding 
-G1 X68.892 Y81.762 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.782 Y82.307 ;not extruding 
-G1 X39.362 Y99.122 ;not extruding 
-G1 X39.505 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.505 Y95.905 ;extruding 
-G1 X28.643 Y89.634 ;extruding 
-G1 X39.429 Y83.406 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.112 Y95.225 ;extruding 
-G1 X29.428 Y89.634 ;extruding 
-G1 X39.037 Y84.086 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.683 Y83.942 ;not extruding 
-G1 X39.719 Y82.991 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.719 Y96.277 ;extruding 
-G1 X28.214 Y89.634 ;extruding 
-G1 X39.644 Y83.034 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.112 Y82.311 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X40.112 Y96.957 ;extruding 
-G1 X27.428 Y89.634 ;extruding 
-G1 X40.037 Y82.354 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.610 Y82.021 ;not extruding 
-G1 X9.994 Y82.166 ;not extruding 
-G1 X39.008 Y80.515 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.928 Y88.067 ;extruding 
-G1 X12.852 Y80.517 ;extruding 
-G1 X12.852 Y65.417 ;extruding 
-G1 X25.931 Y57.866 ;extruding 
-G1 X38.964 Y80.440 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.471 Y80.371 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.928 Y87.613 ;extruding 
-G1 X13.244 Y80.290 ;extruding 
-G1 X13.244 Y65.644 ;extruding 
-G1 X25.788 Y58.402 ;extruding 
-G1 X38.428 Y80.296 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.826 Y80.830 ;not extruding 
-G1 X39.301 Y80.594 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.928 Y88.314 ;extruding 
-G1 X12.637 Y80.641 ;extruding 
-G1 X12.637 Y65.294 ;extruding 
-G1 X26.010 Y57.573 ;extruding 
-G1 X39.257 Y80.518 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.837 Y80.737 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.928 Y88.768 ;extruding 
-G1 X12.244 Y80.867 ;extruding 
-G1 X12.244 Y65.067 ;extruding 
-G1 X26.154 Y57.036 ;extruding 
-G1 X39.794 Y80.662 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.257 Y80.737 ;not extruding 
-G1 X100.597 Y29.857 ;not extruding 
-G1 X23.714 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.852 Y62.283 ;extruding 
-G1 X12.852 Y49.741 ;extruding 
-G1 X23.638 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X22.928 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.244 Y61.603 ;extruding 
-G1 X13.244 Y50.421 ;extruding 
-G1 X22.853 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X23.430 Y56.302 ;not extruding 
-G1 X24.143 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.637 Y62.655 ;extruding 
-G1 X12.637 Y49.369 ;extruding 
-G1 X24.067 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X24.928 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.244 Y63.335 ;extruding 
-G1 X12.244 Y48.689 ;extruding 
-G1 X24.853 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X24.357 Y56.112 ;not extruding 
-G1 X25.928 Y20.658 ;not extruding 
-G1 X25.931 Y54.158 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.852 Y46.606 ;extruding 
-G1 X12.852 Y31.507 ;extruding 
-G1 X25.928 Y23.957 ;extruding 
-G1 X39.008 Y31.509 ;extruding 
-G1 X25.975 Y54.082 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.788 Y53.621 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.244 Y46.379 ;extruding 
-G1 X13.244 Y31.733 ;extruding 
-G1 X25.928 Y24.410 ;extruding 
-G1 X38.471 Y31.652 ;extruding 
-G1 X25.831 Y53.546 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.588 Y54.166 ;not extruding 
-G1 X26.010 Y54.451 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.637 Y46.730 ;extruding 
-G1 X12.637 Y31.383 ;extruding 
-G1 X25.928 Y23.709 ;extruding 
-G1 X39.301 Y31.430 ;extruding 
-G1 X26.053 Y54.375 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.154 Y54.987 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.244 Y46.957 ;extruding 
-G1 X12.244 Y31.156 ;extruding 
-G1 X25.928 Y23.256 ;extruding 
-G1 X39.837 Y31.286 ;extruding 
-G1 X26.197 Y54.912 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.853 Y54.491 ;not extruding 
-G1 X25.928 Y20.658 ;not extruding 
-G1 X39.505 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.643 Y22.390 ;extruding 
-G1 X39.505 Y16.119 ;extruding 
-G1 X39.505 Y28.574 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X29.428 Y22.390 ;extruding 
-G1 X39.112 Y16.799 ;extruding 
-G1 X39.112 Y27.894 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.061 Y28.558 ;not extruding 
-G1 X39.719 Y29.033 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.214 Y22.390 ;extruding 
-G1 X39.719 Y15.747 ;extruding 
-G1 X39.719 Y28.946 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.112 Y29.713 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.428 Y22.390 ;extruding 
-G1 X40.112 Y15.067 ;extruding 
-G1 X40.112 Y29.626 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.614 Y29.423 ;not extruding 
-G1 X55.296 Y3.702 ;not extruding 
-G1 X42.219 Y29.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.219 Y14.551 ;extruding 
-G1 X55.296 Y7.002 ;extruding 
-G1 X68.372 Y14.551 ;extruding 
-G1 X68.372 Y29.654 ;extruding 
-G1 X42.306 Y29.654 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.612 Y29.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.612 Y14.778 ;extruding 
-G1 X55.296 Y7.455 ;extruding 
-G1 X67.979 Y14.778 ;extruding 
-G1 X67.979 Y29.262 ;extruding 
-G1 X42.699 Y29.262 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.041 Y29.362 ;not extruding 
-G1 X42.005 Y29.869 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.005 Y14.427 ;extruding 
-G1 X55.296 Y6.754 ;extruding 
-G1 X68.587 Y14.427 ;extruding 
-G1 X68.587 Y29.869 ;extruding 
-G1 X42.092 Y29.869 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.612 Y30.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.612 Y14.201 ;extruding 
-G1 X55.296 Y6.300 ;extruding 
-G1 X68.979 Y14.201 ;extruding 
-G1 X68.979 Y30.262 ;extruding 
-G1 X41.699 Y30.262 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.809 Y29.716 ;not extruding 
-G1 X71.229 Y12.902 ;not extruding 
-G1 X71.087 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.087 Y16.119 ;extruding 
-G1 X81.949 Y22.390 ;extruding 
-G1 X71.162 Y28.617 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.479 Y16.799 ;extruding 
-G1 X81.163 Y22.390 ;extruding 
-G1 X71.555 Y27.937 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.977 Y28.271 ;not extruding 
-G1 X70.872 Y29.033 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.872 Y15.747 ;extruding 
-G1 X82.378 Y22.390 ;extruding 
-G1 X70.947 Y28.989 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.479 Y29.713 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.479 Y15.067 ;extruding 
-G1 X83.163 Y22.390 ;extruding 
-G1 X70.555 Y29.669 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.636 Y29.154 ;not extruding 
-G1 X95.492 Y26.910 ;not extruding 
-G1 X71.584 Y31.509 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.663 Y23.957 ;extruding 
-G1 X97.740 Y31.507 ;extruding 
-G1 X97.740 Y46.606 ;extruding 
-G1 X84.660 Y54.158 ;extruding 
-G1 X71.627 Y31.584 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X72.120 Y31.652 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.663 Y24.410 ;extruding 
-G1 X97.347 Y31.733 ;extruding 
-G1 X97.347 Y46.379 ;extruding 
-G1 X84.804 Y53.621 ;extruding 
-G1 X72.163 Y31.728 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.748 Y31.207 ;not extruding 
-G1 X71.290 Y31.430 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.663 Y23.709 ;extruding 
-G1 X97.954 Y31.383 ;extruding 
-G1 X97.954 Y46.730 ;extruding 
-G1 X84.581 Y54.451 ;extruding 
-G1 X71.334 Y31.505 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.754 Y31.286 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.663 Y23.256 ;extruding 
-G1 X98.347 Y31.156 ;extruding 
-G1 X98.347 Y46.957 ;extruding 
-G1 X84.438 Y54.987 ;extruding 
-G1 X70.797 Y31.362 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.325 Y31.184 ;not extruding 
-G1 X100.597 Y63.768 ;not extruding 
-G1 X86.878 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.740 Y49.741 ;extruding 
-G1 X97.740 Y62.283 ;extruding 
-G1 X86.953 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X87.663 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.347 Y50.421 ;extruding 
-G1 X97.347 Y61.603 ;extruding 
-G1 X87.739 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X88.166 Y55.722 ;not extruding 
-G1 X86.449 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.954 Y49.369 ;extruding 
-G1 X97.954 Y62.655 ;extruding 
-G1 X86.524 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X85.663 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X98.347 Y48.689 ;extruding 
-G1 X98.347 Y63.335 ;extruding 
-G1 X85.739 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X85.663 Y56.592 ;not extruding 
-G1 X100.597 Y82.166 ;not extruding 
-G1 X84.660 Y57.866 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.740 Y65.417 ;extruding 
-G1 X97.740 Y80.517 ;extruding 
-G1 X84.663 Y88.067 ;extruding 
-G1 X71.584 Y80.515 ;extruding 
-G1 X84.617 Y57.941 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.804 Y58.402 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.347 Y65.644 ;extruding 
-G1 X97.347 Y80.290 ;extruding 
-G1 X84.663 Y87.613 ;extruding 
-G1 X72.120 Y80.371 ;extruding 
-G1 X84.760 Y58.478 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X85.094 Y57.900 ;not extruding 
-G1 X84.581 Y57.573 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.954 Y65.294 ;extruding 
-G1 X97.954 Y80.641 ;extruding 
-G1 X84.663 Y88.314 ;extruding 
-G1 X71.290 Y80.594 ;extruding 
-G1 X84.538 Y57.648 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.438 Y57.036 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X98.347 Y65.067 ;extruding 
-G1 X98.347 Y80.867 ;extruding 
-G1 X84.663 Y88.768 ;extruding 
-G1 X70.754 Y80.737 ;extruding 
-G1 X84.394 Y57.112 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.812 Y57.480 ;not extruding 
-G1 X84.663 Y91.366 ;not extruding 
-G1 X71.087 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.949 Y89.634 ;extruding 
-G1 X71.087 Y95.905 ;extruding 
-G1 X71.087 Y83.450 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.163 Y89.634 ;extruding 
-G1 X71.479 Y95.225 ;extruding 
-G1 X71.479 Y84.130 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y83.463 ;not extruding 
-G1 X70.872 Y82.991 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X82.378 Y89.634 ;extruding 
-G1 X70.872 Y96.277 ;extruding 
-G1 X70.872 Y83.078 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.479 Y82.311 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X83.163 Y89.634 ;extruding 
-G1 X70.479 Y96.957 ;extruding 
-G1 X70.479 Y82.398 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X69.977 Y82.601 ;not extruding 
-G1 X55.296 Y3.702 ;not extruding 
-G1 X68.946 Y79.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.646 Y79.654 ;extruding 
-G1 X27.995 Y56.012 ;extruding 
-G1 X41.646 Y32.369 ;extruding 
-G1 X68.946 Y32.369 ;extruding 
-G1 X82.596 Y56.012 ;extruding 
-G1 X68.989 Y79.579 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.719 Y79.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.872 Y79.262 ;extruding 
-G1 X28.449 Y56.012 ;extruding 
-G1 X41.872 Y32.762 ;extruding 
-G1 X68.719 Y32.762 ;extruding 
-G1 X82.142 Y56.012 ;extruding 
-G1 X68.763 Y79.186 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.719 Y79.842 ;not extruding 
-G1 X69.070 Y79.869 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.522 Y79.869 ;extruding 
-G1 X27.748 Y56.012 ;extruding 
-G1 X41.522 Y32.154 ;extruding 
-G1 X69.070 Y32.154 ;extruding 
-G1 X82.844 Y56.012 ;extruding 
-G1 X69.113 Y79.794 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X69.296 Y80.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.295 Y80.262 ;extruding 
-G1 X27.294 Y56.012 ;extruding 
-G1 X41.295 Y31.762 ;extruding 
-G1 X69.296 Y31.762 ;extruding 
-G1 X83.297 Y56.012 ;extruding 
-G1 X69.340 Y80.186 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.797 Y79.967 ;not extruding 
-G1 D-148.500 ;not extruding 
-G1 X39.362 Y99.122 ;not extruding 
-G1 X68.372 Y82.369 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.372 Y97.472 ;extruding 
-G1 X55.296 Y105.022 ;extruding 
-G1 X42.219 Y97.472 ;extruding 
-G1 X42.219 Y82.369 ;extruding 
-G1 X68.285 Y82.369 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X67.979 Y82.762 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X67.979 Y97.245 ;extruding 
-G1 X55.296 Y104.568 ;extruding 
-G1 X42.612 Y97.245 ;extruding 
-G1 X42.612 Y82.762 ;extruding 
-G1 X67.892 Y82.762 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.551 Y82.662 ;not extruding 
-G1 X68.587 Y82.154 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.587 Y97.596 ;extruding 
-G1 X55.296 Y105.270 ;extruding 
-G1 X42.005 Y97.596 ;extruding 
-G1 X42.005 Y82.154 ;extruding 
-G1 X68.500 Y82.154 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.979 Y81.762 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.979 Y97.823 ;extruding 
-G1 X55.296 Y105.723 ;extruding 
-G1 X41.612 Y97.823 ;extruding 
-G1 X41.612 Y81.762 ;extruding 
-G1 X68.892 Y81.762 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.782 Y82.307 ;not extruding 
-G1 X71.229 Y99.122 ;not extruding 
-G1 X71.087 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.949 Y89.634 ;extruding 
-G1 X71.087 Y95.905 ;extruding 
-G1 X71.087 Y83.450 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.163 Y89.634 ;extruding 
-G1 X71.479 Y95.225 ;extruding 
-G1 X71.479 Y84.130 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y83.463 ;not extruding 
-G1 X70.872 Y82.991 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X82.378 Y89.634 ;extruding 
-G1 X70.872 Y96.277 ;extruding 
-G1 X70.872 Y83.078 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.479 Y82.311 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X83.163 Y89.634 ;extruding 
-G1 X70.479 Y96.957 ;extruding 
-G1 X70.479 Y82.398 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.982 Y82.601 ;not extruding 
-G1 X100.597 Y82.166 ;not extruding 
-G1 X71.584 Y80.515 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.660 Y57.866 ;extruding 
-G1 X97.740 Y65.417 ;extruding 
-G1 X97.740 Y80.517 ;extruding 
-G1 X84.663 Y88.067 ;extruding 
-G1 X71.659 Y80.558 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X72.120 Y80.371 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.804 Y58.402 ;extruding 
-G1 X97.347 Y65.644 ;extruding 
-G1 X97.347 Y80.290 ;extruding 
-G1 X84.663 Y87.613 ;extruding 
-G1 X72.195 Y80.415 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.575 Y80.173 ;not extruding 
-G1 X71.290 Y80.594 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.581 Y57.573 ;extruding 
-G1 X97.954 Y65.294 ;extruding 
-G1 X97.954 Y80.641 ;extruding 
-G1 X84.663 Y88.314 ;extruding 
-G1 X71.366 Y80.637 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.754 Y80.737 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.438 Y57.036 ;extruding 
-G1 X98.347 Y65.067 ;extruding 
-G1 X98.347 Y80.867 ;extruding 
-G1 X84.663 Y88.768 ;extruding 
-G1 X70.829 Y80.781 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.199 Y80.365 ;not extruding 
-G1 X9.994 Y29.857 ;not extruding 
-G1 X86.878 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.740 Y49.741 ;extruding 
-G1 X97.740 Y62.283 ;extruding 
-G1 X86.953 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X87.663 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.347 Y50.421 ;extruding 
-G1 X97.347 Y61.603 ;extruding 
-G1 X87.739 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X87.161 Y55.722 ;not extruding 
-G1 X86.449 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.954 Y49.369 ;extruding 
-G1 X97.954 Y62.655 ;extruding 
-G1 X86.524 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X85.663 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X98.347 Y48.689 ;extruding 
-G1 X98.347 Y63.335 ;extruding 
-G1 X85.739 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X85.663 Y56.592 ;not extruding 
-G1 X84.663 Y20.658 ;not extruding 
-G1 X84.660 Y54.158 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.584 Y31.509 ;extruding 
-G1 X84.663 Y23.957 ;extruding 
-G1 X97.740 Y31.507 ;extruding 
-G1 X97.740 Y46.606 ;extruding 
-G1 X84.735 Y54.114 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.804 Y53.621 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X72.120 Y31.652 ;extruding 
-G1 X84.663 Y24.410 ;extruding 
-G1 X97.347 Y31.733 ;extruding 
-G1 X97.347 Y46.379 ;extruding 
-G1 X84.879 Y53.578 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.360 Y53.995 ;not extruding 
-G1 X84.581 Y54.451 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.290 Y31.430 ;extruding 
-G1 X84.663 Y23.709 ;extruding 
-G1 X97.954 Y31.383 ;extruding 
-G1 X97.954 Y46.730 ;extruding 
-G1 X84.657 Y54.407 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.438 Y54.987 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.754 Y31.286 ;extruding 
-G1 X84.663 Y23.256 ;extruding 
-G1 X98.347 Y31.156 ;extruding 
-G1 X98.347 Y46.957 ;extruding 
-G1 X84.513 Y54.944 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.338 Y54.416 ;not extruding 
-G1 X84.663 Y20.658 ;not extruding 
-G1 X71.087 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.087 Y16.119 ;extruding 
-G1 X81.949 Y22.390 ;extruding 
-G1 X71.162 Y28.617 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.479 Y16.799 ;extruding 
-G1 X81.163 Y22.390 ;extruding 
-G1 X71.555 Y27.937 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.977 Y28.271 ;not extruding 
-G1 X70.872 Y29.033 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.872 Y15.747 ;extruding 
-G1 X82.378 Y22.390 ;extruding 
-G1 X70.947 Y28.989 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.479 Y29.713 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.479 Y15.067 ;extruding 
-G1 X83.163 Y22.390 ;extruding 
-G1 X70.555 Y29.669 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.599 Y29.145 ;not extruding 
-G1 X55.296 Y3.702 ;not extruding 
-G1 X68.372 Y29.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.219 Y29.654 ;extruding 
-G1 X42.219 Y14.551 ;extruding 
-G1 X55.296 Y7.002 ;extruding 
-G1 X68.372 Y14.551 ;extruding 
-G1 X68.372 Y29.567 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X67.979 Y29.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.612 Y29.262 ;extruding 
-G1 X42.612 Y14.778 ;extruding 
-G1 X55.296 Y7.455 ;extruding 
-G1 X67.979 Y14.778 ;extruding 
-G1 X67.979 Y29.175 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.081 Y29.833 ;not extruding 
-G1 X68.587 Y29.869 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.005 Y29.869 ;extruding 
-G1 X42.005 Y14.427 ;extruding 
-G1 X55.296 Y6.754 ;extruding 
-G1 X68.587 Y14.427 ;extruding 
-G1 X68.587 Y29.782 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.979 Y30.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.612 Y30.262 ;extruding 
-G1 X41.612 Y14.201 ;extruding 
-G1 X55.296 Y6.300 ;extruding 
-G1 X68.979 Y14.201 ;extruding 
-G1 X68.979 Y30.175 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.435 Y30.063 ;not extruding 
-G1 X39.362 Y12.902 ;not extruding 
-G1 X39.505 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.643 Y22.390 ;extruding 
-G1 X39.505 Y16.119 ;extruding 
-G1 X39.505 Y28.574 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X29.428 Y22.390 ;extruding 
-G1 X39.112 Y16.799 ;extruding 
-G1 X39.112 Y27.894 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.026 Y28.554 ;not extruding 
-G1 X39.719 Y29.033 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.214 Y22.390 ;extruding 
-G1 X39.719 Y15.747 ;extruding 
-G1 X39.719 Y28.946 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.112 Y29.713 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.428 Y22.390 ;extruding 
-G1 X40.112 Y15.067 ;extruding 
-G1 X40.112 Y29.626 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.614 Y29.423 ;not extruding 
-G1 X23.295 Y22.178 ;not extruding 
-G1 X39.008 Y31.509 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.931 Y54.158 ;extruding 
-G1 X12.852 Y46.606 ;extruding 
-G1 X12.852 Y31.507 ;extruding 
-G1 X25.928 Y23.957 ;extruding 
-G1 X38.932 Y31.465 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.471 Y31.652 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.788 Y53.621 ;extruding 
-G1 X13.244 Y46.379 ;extruding 
-G1 X13.244 Y31.733 ;extruding 
-G1 X25.928 Y24.410 ;extruding 
-G1 X38.396 Y31.609 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.006 Y31.877 ;not extruding 
-G1 X39.301 Y31.430 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X26.010 Y54.451 ;extruding 
-G1 X12.637 Y46.730 ;extruding 
-G1 X12.637 Y31.383 ;extruding 
-G1 X25.928 Y23.709 ;extruding 
-G1 X39.226 Y31.387 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.837 Y31.286 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X26.154 Y54.987 ;extruding 
-G1 X12.244 Y46.957 ;extruding 
-G1 X12.244 Y31.156 ;extruding 
-G1 X25.928 Y23.256 ;extruding 
-G1 X39.762 Y31.243 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.335 Y31.576 ;not extruding 
-G1 X100.597 Y82.166 ;not extruding 
-G1 X23.714 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.852 Y62.283 ;extruding 
-G1 X12.852 Y49.741 ;extruding 
-G1 X23.638 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X22.928 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.244 Y61.603 ;extruding 
-G1 X13.244 Y50.421 ;extruding 
-G1 X22.853 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X23.430 Y56.302 ;not extruding 
-G1 X24.143 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.637 Y62.655 ;extruding 
-G1 X12.637 Y49.369 ;extruding 
-G1 X24.067 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X24.928 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.244 Y63.335 ;extruding 
-G1 X12.244 Y48.689 ;extruding 
-G1 X24.853 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X24.357 Y56.112 ;not extruding 
-G1 X25.928 Y91.366 ;not extruding 
-G1 X25.931 Y57.866 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.008 Y80.515 ;extruding 
-G1 X25.928 Y88.067 ;extruding 
-G1 X12.852 Y80.517 ;extruding 
-G1 X12.852 Y65.417 ;extruding 
-G1 X25.856 Y57.909 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.788 Y58.402 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X38.471 Y80.371 ;extruding 
-G1 X25.928 Y87.613 ;extruding 
-G1 X13.244 Y80.290 ;extruding 
-G1 X13.244 Y65.644 ;extruding 
-G1 X25.712 Y58.446 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.290 Y58.112 ;not extruding 
-G1 X26.010 Y57.573 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.301 Y80.594 ;extruding 
-G1 X25.928 Y88.314 ;extruding 
-G1 X12.637 Y80.641 ;extruding 
-G1 X12.637 Y65.294 ;extruding 
-G1 X25.935 Y57.616 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.154 Y57.036 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.837 Y80.737 ;extruding 
-G1 X25.928 Y88.768 ;extruding 
-G1 X12.244 Y80.867 ;extruding 
-G1 X12.244 Y65.067 ;extruding 
-G1 X26.078 Y57.080 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.253 Y57.608 ;not extruding 
-G1 X25.928 Y91.366 ;not extruding 
-G1 X39.505 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.505 Y95.905 ;extruding 
-G1 X28.643 Y89.634 ;extruding 
-G1 X39.429 Y83.406 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.112 Y95.225 ;extruding 
-G1 X29.428 Y89.634 ;extruding 
-G1 X39.037 Y84.086 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.683 Y83.942 ;not extruding 
-G1 X39.719 Y82.991 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.719 Y96.277 ;extruding 
-G1 X28.214 Y89.634 ;extruding 
-G1 X39.644 Y83.034 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.112 Y82.311 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X40.112 Y96.957 ;extruding 
-G1 X27.428 Y89.634 ;extruding 
-G1 X40.037 Y82.354 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.610 Y82.021 ;not extruding 
-G1 X100.597 Y29.857 ;not extruding 
-G1 X41.646 Y79.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.995 Y56.012 ;extruding 
-G1 X41.646 Y32.369 ;extruding 
-G1 X68.946 Y32.369 ;extruding 
-G1 X82.596 Y56.012 ;extruding 
-G1 X68.946 Y79.654 ;extruding 
-G1 X41.733 Y79.654 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.872 Y79.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.449 Y56.012 ;extruding 
-G1 X41.872 Y32.762 ;extruding 
-G1 X68.719 Y32.762 ;extruding 
-G1 X82.142 Y56.012 ;extruding 
-G1 X68.719 Y79.262 ;extruding 
-G1 X41.959 Y79.262 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.370 Y79.552 ;not extruding 
-G1 X41.522 Y79.869 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.748 Y56.012 ;extruding 
-G1 X41.522 Y32.154 ;extruding 
-G1 X69.070 Y32.154 ;extruding 
-G1 X82.844 Y56.012 ;extruding 
-G1 X69.070 Y79.869 ;extruding 
-G1 X41.609 Y79.869 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.295 Y80.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.294 Y56.012 ;extruding 
-G1 X41.295 Y31.762 ;extruding 
-G1 X69.296 Y31.762 ;extruding 
-G1 X83.297 Y56.012 ;extruding 
-G1 X69.296 Y80.262 ;extruding 
-G1 X41.382 Y80.262 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.295 Y79.682 ;not extruding 
-G1 D-148.000 ;not extruding 
-G1 X71.229 Y99.122 ;not extruding 
-G1 X42.219 Y82.369 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.372 Y82.369 ;extruding 
-G1 X68.372 Y97.472 ;extruding 
-G1 X55.296 Y105.022 ;extruding 
-G1 X42.219 Y97.472 ;extruding 
-G1 X42.219 Y82.456 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.612 Y82.762 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X67.979 Y82.762 ;extruding 
-G1 X67.979 Y97.245 ;extruding 
-G1 X55.296 Y104.568 ;extruding 
-G1 X42.612 Y97.245 ;extruding 
-G1 X42.612 Y82.849 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.511 Y82.191 ;not extruding 
-G1 X42.005 Y82.154 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.587 Y82.154 ;extruding 
-G1 X68.587 Y97.596 ;extruding 
-G1 X55.296 Y105.270 ;extruding 
-G1 X42.005 Y97.596 ;extruding 
-G1 X42.005 Y82.241 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.612 Y81.762 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.979 Y81.762 ;extruding 
-G1 X68.979 Y97.823 ;extruding 
-G1 X55.296 Y105.723 ;extruding 
-G1 X41.612 Y97.823 ;extruding 
-G1 X41.612 Y81.849 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.157 Y81.961 ;not extruding 
-G1 X71.229 Y99.122 ;not extruding 
-G1 X71.087 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.949 Y89.634 ;extruding 
-G1 X71.087 Y95.905 ;extruding 
-G1 X71.087 Y83.450 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.163 Y89.634 ;extruding 
-G1 X71.479 Y95.225 ;extruding 
-G1 X71.479 Y84.130 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y83.463 ;not extruding 
-G1 X70.872 Y82.991 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X82.378 Y89.634 ;extruding 
-G1 X70.872 Y96.277 ;extruding 
-G1 X70.872 Y83.078 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.479 Y82.311 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X83.163 Y89.634 ;extruding 
-G1 X70.479 Y96.957 ;extruding 
-G1 X70.479 Y82.398 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X69.977 Y82.601 ;not extruding 
-G1 X100.597 Y82.166 ;not extruding 
-G1 X71.584 Y80.515 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.660 Y57.866 ;extruding 
-G1 X97.740 Y65.417 ;extruding 
-G1 X97.740 Y80.517 ;extruding 
-G1 X84.663 Y88.067 ;extruding 
-G1 X71.659 Y80.558 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X72.120 Y80.371 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.804 Y58.402 ;extruding 
-G1 X97.347 Y65.644 ;extruding 
-G1 X97.347 Y80.290 ;extruding 
-G1 X84.663 Y87.613 ;extruding 
-G1 X72.195 Y80.415 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.575 Y80.173 ;not extruding 
-G1 X71.290 Y80.594 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.581 Y57.573 ;extruding 
-G1 X97.954 Y65.294 ;extruding 
-G1 X97.954 Y80.641 ;extruding 
-G1 X84.663 Y88.314 ;extruding 
-G1 X71.366 Y80.637 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.754 Y80.737 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.438 Y57.036 ;extruding 
-G1 X98.347 Y65.067 ;extruding 
-G1 X98.347 Y80.867 ;extruding 
-G1 X84.663 Y88.768 ;extruding 
-G1 X70.829 Y80.781 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.199 Y80.365 ;not extruding 
-G1 X9.994 Y29.857 ;not extruding 
-G1 X86.878 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.740 Y49.741 ;extruding 
-G1 X97.740 Y62.283 ;extruding 
-G1 X86.953 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X87.663 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.347 Y50.421 ;extruding 
-G1 X97.347 Y61.603 ;extruding 
-G1 X87.739 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X87.161 Y55.722 ;not extruding 
-G1 X86.449 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.954 Y49.369 ;extruding 
-G1 X97.954 Y62.655 ;extruding 
-G1 X86.524 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X85.663 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X98.347 Y48.689 ;extruding 
-G1 X98.347 Y63.335 ;extruding 
-G1 X85.739 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X85.663 Y56.592 ;not extruding 
-G1 X84.663 Y20.658 ;not extruding 
-G1 X84.660 Y54.158 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.584 Y31.509 ;extruding 
-G1 X84.663 Y23.957 ;extruding 
-G1 X97.740 Y31.507 ;extruding 
-G1 X97.740 Y46.606 ;extruding 
-G1 X84.735 Y54.114 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.804 Y53.621 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X72.120 Y31.652 ;extruding 
-G1 X84.663 Y24.410 ;extruding 
-G1 X97.347 Y31.733 ;extruding 
-G1 X97.347 Y46.379 ;extruding 
-G1 X84.879 Y53.578 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.360 Y53.995 ;not extruding 
-G1 X84.581 Y54.451 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.290 Y31.430 ;extruding 
-G1 X84.663 Y23.709 ;extruding 
-G1 X97.954 Y31.383 ;extruding 
-G1 X97.954 Y46.730 ;extruding 
-G1 X84.657 Y54.407 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.438 Y54.987 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.754 Y31.286 ;extruding 
-G1 X84.663 Y23.256 ;extruding 
-G1 X98.347 Y31.156 ;extruding 
-G1 X98.347 Y46.957 ;extruding 
-G1 X84.513 Y54.944 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.338 Y54.416 ;not extruding 
-G1 X84.663 Y20.658 ;not extruding 
-G1 X71.087 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.087 Y16.119 ;extruding 
-G1 X81.949 Y22.390 ;extruding 
-G1 X71.162 Y28.617 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.479 Y16.799 ;extruding 
-G1 X81.163 Y22.390 ;extruding 
-G1 X71.555 Y27.937 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.977 Y28.271 ;not extruding 
-G1 X70.872 Y29.033 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.872 Y15.747 ;extruding 
-G1 X82.378 Y22.390 ;extruding 
-G1 X70.947 Y28.989 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.479 Y29.713 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.479 Y15.067 ;extruding 
-G1 X83.163 Y22.390 ;extruding 
-G1 X70.555 Y29.669 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.562 Y29.139 ;not extruding 
-G1 X55.296 Y3.702 ;not extruding 
-G1 X68.372 Y29.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.219 Y29.654 ;extruding 
-G1 X42.219 Y14.551 ;extruding 
-G1 X55.296 Y7.002 ;extruding 
-G1 X68.372 Y14.551 ;extruding 
-G1 X68.372 Y29.567 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X67.979 Y29.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.612 Y29.262 ;extruding 
-G1 X42.612 Y14.778 ;extruding 
-G1 X55.296 Y7.455 ;extruding 
-G1 X67.979 Y14.778 ;extruding 
-G1 X67.979 Y29.175 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.081 Y29.833 ;not extruding 
-G1 X68.587 Y29.869 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.005 Y29.869 ;extruding 
-G1 X42.005 Y14.427 ;extruding 
-G1 X55.296 Y6.754 ;extruding 
-G1 X68.587 Y14.427 ;extruding 
-G1 X68.587 Y29.782 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.979 Y30.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.612 Y30.262 ;extruding 
-G1 X41.612 Y14.201 ;extruding 
-G1 X55.296 Y6.300 ;extruding 
-G1 X68.979 Y14.201 ;extruding 
-G1 X68.979 Y30.175 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.435 Y30.063 ;not extruding 
-G1 X39.362 Y12.902 ;not extruding 
-G1 X39.505 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.643 Y22.390 ;extruding 
-G1 X39.505 Y16.119 ;extruding 
-G1 X39.505 Y28.574 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X29.428 Y22.390 ;extruding 
-G1 X39.112 Y16.799 ;extruding 
-G1 X39.112 Y27.894 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.994 Y28.549 ;not extruding 
-G1 X39.719 Y29.033 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.214 Y22.390 ;extruding 
-G1 X39.719 Y15.747 ;extruding 
-G1 X39.719 Y28.946 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.112 Y29.713 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.428 Y22.390 ;extruding 
-G1 X40.112 Y15.067 ;extruding 
-G1 X40.112 Y29.626 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.614 Y29.423 ;not extruding 
-G1 X23.694 Y21.947 ;not extruding 
-G1 X39.008 Y31.509 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.931 Y54.158 ;extruding 
-G1 X12.852 Y46.606 ;extruding 
-G1 X12.852 Y31.507 ;extruding 
-G1 X25.928 Y23.957 ;extruding 
-G1 X38.932 Y31.465 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.471 Y31.652 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.788 Y53.621 ;extruding 
-G1 X13.244 Y46.379 ;extruding 
-G1 X13.244 Y31.733 ;extruding 
-G1 X25.928 Y24.410 ;extruding 
-G1 X38.396 Y31.609 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.000 Y31.892 ;not extruding 
-G1 X39.301 Y31.430 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X26.010 Y54.451 ;extruding 
-G1 X12.637 Y46.730 ;extruding 
-G1 X12.637 Y31.383 ;extruding 
-G1 X25.928 Y23.709 ;extruding 
-G1 X39.226 Y31.387 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.837 Y31.286 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X26.154 Y54.987 ;extruding 
-G1 X12.244 Y46.957 ;extruding 
-G1 X12.244 Y31.156 ;extruding 
-G1 X25.928 Y23.256 ;extruding 
-G1 X39.762 Y31.243 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.335 Y31.576 ;not extruding 
-G1 X9.994 Y48.256 ;not extruding 
-G1 X23.714 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.852 Y62.283 ;extruding 
-G1 X12.852 Y49.741 ;extruding 
-G1 X23.638 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X22.928 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.244 Y61.603 ;extruding 
-G1 X13.244 Y50.421 ;extruding 
-G1 X22.853 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X23.430 Y56.302 ;not extruding 
-G1 X24.143 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.637 Y62.655 ;extruding 
-G1 X12.637 Y49.369 ;extruding 
-G1 X24.067 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X24.928 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.244 Y63.335 ;extruding 
-G1 X12.244 Y48.689 ;extruding 
-G1 X24.853 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X24.357 Y56.112 ;not extruding 
-G1 X9.994 Y82.166 ;not extruding 
-G1 X25.931 Y57.866 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.008 Y80.515 ;extruding 
-G1 X25.928 Y88.067 ;extruding 
-G1 X12.852 Y80.517 ;extruding 
-G1 X12.852 Y65.417 ;extruding 
-G1 X25.856 Y57.909 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.788 Y58.402 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X38.471 Y80.371 ;extruding 
-G1 X25.928 Y87.613 ;extruding 
-G1 X13.244 Y80.290 ;extruding 
-G1 X13.244 Y65.644 ;extruding 
-G1 X25.712 Y58.446 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.290 Y58.112 ;not extruding 
-G1 X26.010 Y57.573 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.301 Y80.594 ;extruding 
-G1 X25.928 Y88.314 ;extruding 
-G1 X12.637 Y80.641 ;extruding 
-G1 X12.637 Y65.294 ;extruding 
-G1 X25.935 Y57.616 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.154 Y57.036 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.837 Y80.737 ;extruding 
-G1 X25.928 Y88.768 ;extruding 
-G1 X12.244 Y80.867 ;extruding 
-G1 X12.244 Y65.067 ;extruding 
-G1 X26.078 Y57.080 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.154 Y57.616 ;not extruding 
-G1 X25.928 Y91.366 ;not extruding 
-G1 X39.505 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.505 Y95.905 ;extruding 
-G1 X28.643 Y89.634 ;extruding 
-G1 X39.429 Y83.406 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.112 Y95.225 ;extruding 
-G1 X29.428 Y89.634 ;extruding 
-G1 X39.037 Y84.086 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.683 Y83.942 ;not extruding 
-G1 X39.719 Y82.991 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.719 Y96.277 ;extruding 
-G1 X28.214 Y89.634 ;extruding 
-G1 X39.644 Y83.034 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.112 Y82.311 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X40.112 Y96.957 ;extruding 
-G1 X27.428 Y89.634 ;extruding 
-G1 X40.037 Y82.354 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.610 Y82.021 ;not extruding 
-G1 X100.597 Y29.857 ;not extruding 
-G1 X41.646 Y79.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.995 Y56.012 ;extruding 
-G1 X41.646 Y32.369 ;extruding 
-G1 X68.946 Y32.369 ;extruding 
-G1 X82.596 Y56.012 ;extruding 
-G1 X68.946 Y79.654 ;extruding 
-G1 X41.733 Y79.654 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.872 Y79.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.449 Y56.012 ;extruding 
-G1 X41.872 Y32.762 ;extruding 
-G1 X68.719 Y32.762 ;extruding 
-G1 X82.142 Y56.012 ;extruding 
-G1 X68.719 Y79.262 ;extruding 
-G1 X41.959 Y79.262 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.370 Y79.552 ;not extruding 
-G1 X41.522 Y79.869 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.748 Y56.012 ;extruding 
-G1 X41.522 Y32.154 ;extruding 
-G1 X69.070 Y32.154 ;extruding 
-G1 X82.844 Y56.012 ;extruding 
-G1 X69.070 Y79.869 ;extruding 
-G1 X41.609 Y79.869 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.295 Y80.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.294 Y56.012 ;extruding 
-G1 X41.295 Y31.762 ;extruding 
-G1 X69.296 Y31.762 ;extruding 
-G1 X83.297 Y56.012 ;extruding 
-G1 X69.296 Y80.262 ;extruding 
-G1 X41.382 Y80.262 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.295 Y79.682 ;not extruding 
-G1 D-147.500 ;not extruding 
-G1 X71.229 Y99.122 ;not extruding 
-G1 X42.219 Y82.369 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.372 Y82.369 ;extruding 
-G1 X68.372 Y97.472 ;extruding 
-G1 X55.296 Y105.022 ;extruding 
-G1 X42.219 Y97.472 ;extruding 
-G1 X42.219 Y82.456 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.612 Y82.762 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X67.979 Y82.762 ;extruding 
-G1 X67.979 Y97.245 ;extruding 
-G1 X55.296 Y104.568 ;extruding 
-G1 X42.612 Y97.245 ;extruding 
-G1 X42.612 Y82.849 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.511 Y82.191 ;not extruding 
-G1 X42.005 Y82.154 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.587 Y82.154 ;extruding 
-G1 X68.587 Y97.596 ;extruding 
-G1 X55.296 Y105.270 ;extruding 
-G1 X42.005 Y97.596 ;extruding 
-G1 X42.005 Y82.241 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.612 Y81.762 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.979 Y81.762 ;extruding 
-G1 X68.979 Y97.823 ;extruding 
-G1 X55.296 Y105.723 ;extruding 
-G1 X41.612 Y97.823 ;extruding 
-G1 X41.612 Y81.849 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.157 Y81.961 ;not extruding 
-G1 X39.362 Y99.122 ;not extruding 
-G1 X39.505 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.505 Y95.905 ;extruding 
-G1 X28.643 Y89.634 ;extruding 
-G1 X39.429 Y83.406 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.112 Y95.225 ;extruding 
-G1 X29.428 Y89.634 ;extruding 
-G1 X39.037 Y84.086 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.683 Y83.942 ;not extruding 
-G1 X39.719 Y82.991 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.719 Y96.277 ;extruding 
-G1 X28.214 Y89.634 ;extruding 
-G1 X39.644 Y83.034 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.112 Y82.311 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X40.112 Y96.957 ;extruding 
-G1 X27.428 Y89.634 ;extruding 
-G1 X40.037 Y82.354 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.610 Y82.021 ;not extruding 
-G1 X9.994 Y82.166 ;not extruding 
-G1 X39.008 Y80.515 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.928 Y88.067 ;extruding 
-G1 X12.852 Y80.517 ;extruding 
-G1 X12.852 Y65.417 ;extruding 
-G1 X25.931 Y57.866 ;extruding 
-G1 X38.964 Y80.440 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.471 Y80.371 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.928 Y87.613 ;extruding 
-G1 X13.244 Y80.290 ;extruding 
-G1 X13.244 Y65.644 ;extruding 
-G1 X25.788 Y58.402 ;extruding 
-G1 X38.428 Y80.296 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.786 Y80.859 ;not extruding 
-G1 X39.301 Y80.594 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.928 Y88.314 ;extruding 
-G1 X12.637 Y80.641 ;extruding 
-G1 X12.637 Y65.294 ;extruding 
-G1 X26.010 Y57.573 ;extruding 
-G1 X39.257 Y80.518 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.837 Y80.737 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X25.928 Y88.768 ;extruding 
-G1 X12.244 Y80.867 ;extruding 
-G1 X12.244 Y65.067 ;extruding 
-G1 X26.154 Y57.036 ;extruding 
-G1 X39.794 Y80.662 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.257 Y80.737 ;not extruding 
-G1 X100.597 Y29.857 ;not extruding 
-G1 X23.714 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.852 Y62.283 ;extruding 
-G1 X12.852 Y49.741 ;extruding 
-G1 X23.638 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X22.928 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.244 Y61.603 ;extruding 
-G1 X13.244 Y50.421 ;extruding 
-G1 X22.853 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X23.430 Y56.302 ;not extruding 
-G1 X24.143 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.637 Y62.655 ;extruding 
-G1 X12.637 Y49.369 ;extruding 
-G1 X24.067 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X24.928 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.244 Y63.335 ;extruding 
-G1 X12.244 Y48.689 ;extruding 
-G1 X24.853 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X24.357 Y56.112 ;not extruding 
-G1 X25.928 Y20.658 ;not extruding 
-G1 X25.931 Y54.158 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.852 Y46.606 ;extruding 
-G1 X12.852 Y31.507 ;extruding 
-G1 X25.928 Y23.957 ;extruding 
-G1 X39.008 Y31.509 ;extruding 
-G1 X25.975 Y54.082 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.788 Y53.621 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.244 Y46.379 ;extruding 
-G1 X13.244 Y31.733 ;extruding 
-G1 X25.928 Y24.410 ;extruding 
-G1 X38.471 Y31.652 ;extruding 
-G1 X25.831 Y53.546 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.588 Y54.166 ;not extruding 
-G1 X26.010 Y54.451 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.637 Y46.730 ;extruding 
-G1 X12.637 Y31.383 ;extruding 
-G1 X25.928 Y23.709 ;extruding 
-G1 X39.301 Y31.430 ;extruding 
-G1 X26.053 Y54.375 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.154 Y54.987 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.244 Y46.957 ;extruding 
-G1 X12.244 Y31.156 ;extruding 
-G1 X25.928 Y23.256 ;extruding 
-G1 X39.837 Y31.286 ;extruding 
-G1 X26.197 Y54.912 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.788 Y54.537 ;not extruding 
-G1 X25.928 Y20.658 ;not extruding 
-G1 X39.505 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.643 Y22.390 ;extruding 
-G1 X39.505 Y16.119 ;extruding 
-G1 X39.505 Y28.574 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X29.428 Y22.390 ;extruding 
-G1 X39.112 Y16.799 ;extruding 
-G1 X39.112 Y27.894 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.962 Y28.541 ;not extruding 
-G1 X39.719 Y29.033 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.214 Y22.390 ;extruding 
-G1 X39.719 Y15.747 ;extruding 
-G1 X39.719 Y28.946 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.112 Y29.713 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X27.428 Y22.390 ;extruding 
-G1 X40.112 Y15.067 ;extruding 
-G1 X40.112 Y29.626 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.614 Y29.423 ;not extruding 
-G1 X55.296 Y3.702 ;not extruding 
-G1 X42.219 Y29.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.219 Y14.551 ;extruding 
-G1 X55.296 Y7.002 ;extruding 
-G1 X68.372 Y14.551 ;extruding 
-G1 X68.372 Y29.654 ;extruding 
-G1 X42.306 Y29.654 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.612 Y29.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.612 Y14.778 ;extruding 
-G1 X55.296 Y7.455 ;extruding 
-G1 X67.979 Y14.778 ;extruding 
-G1 X67.979 Y29.262 ;extruding 
-G1 X42.699 Y29.262 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X42.041 Y29.362 ;not extruding 
-G1 X42.005 Y29.869 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X42.005 Y14.427 ;extruding 
-G1 X55.296 Y6.754 ;extruding 
-G1 X68.587 Y14.427 ;extruding 
-G1 X68.587 Y29.869 ;extruding 
-G1 X42.092 Y29.869 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.612 Y30.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.612 Y14.201 ;extruding 
-G1 X55.296 Y6.300 ;extruding 
-G1 X68.979 Y14.201 ;extruding 
-G1 X68.979 Y30.262 ;extruding 
-G1 X41.699 Y30.262 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X41.809 Y29.716 ;not extruding 
-G1 X74.588 Y14.841 ;not extruding 
-G1 X71.087 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.087 Y16.119 ;extruding 
-G1 X81.949 Y22.390 ;extruding 
-G1 X71.162 Y28.617 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.479 Y16.799 ;extruding 
-G1 X81.163 Y22.390 ;extruding 
-G1 X71.555 Y27.937 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.977 Y28.271 ;not extruding 
-G1 X70.872 Y29.033 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.872 Y15.747 ;extruding 
-G1 X82.378 Y22.390 ;extruding 
-G1 X70.947 Y28.989 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.479 Y29.713 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X70.479 Y15.067 ;extruding 
-G1 X83.163 Y22.390 ;extruding 
-G1 X70.555 Y29.669 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.523 Y29.134 ;not extruding 
-G1 X87.057 Y22.040 ;not extruding 
-G1 X71.584 Y31.509 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.663 Y23.957 ;extruding 
-G1 X97.740 Y31.507 ;extruding 
-G1 X97.740 Y46.606 ;extruding 
-G1 X84.660 Y54.158 ;extruding 
-G1 X71.627 Y31.584 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X72.120 Y31.652 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.663 Y24.410 ;extruding 
-G1 X97.347 Y31.733 ;extruding 
-G1 X97.347 Y46.379 ;extruding 
-G1 X84.804 Y53.621 ;extruding 
-G1 X72.163 Y31.728 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.748 Y31.207 ;not extruding 
-G1 X71.290 Y31.430 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.663 Y23.709 ;extruding 
-G1 X97.954 Y31.383 ;extruding 
-G1 X97.954 Y46.730 ;extruding 
-G1 X84.581 Y54.451 ;extruding 
-G1 X71.334 Y31.505 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.754 Y31.286 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.663 Y23.256 ;extruding 
-G1 X98.347 Y31.156 ;extruding 
-G1 X98.347 Y46.957 ;extruding 
-G1 X84.438 Y54.987 ;extruding 
-G1 X70.797 Y31.362 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.325 Y31.184 ;not extruding 
-G1 X9.994 Y82.166 ;not extruding 
-G1 X86.878 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.740 Y49.741 ;extruding 
-G1 X97.740 Y62.283 ;extruding 
-G1 X86.953 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X87.663 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.347 Y50.421 ;extruding 
-G1 X97.347 Y61.603 ;extruding 
-G1 X87.739 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X87.161 Y55.722 ;not extruding 
-G1 X86.449 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.954 Y49.369 ;extruding 
-G1 X97.954 Y62.655 ;extruding 
-G1 X86.524 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X85.663 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X98.347 Y48.689 ;extruding 
-G1 X98.347 Y63.335 ;extruding 
-G1 X85.739 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X85.663 Y56.592 ;not extruding 
-G1 X84.663 Y91.366 ;not extruding 
-G1 X84.660 Y57.866 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.740 Y65.417 ;extruding 
-G1 X97.740 Y80.517 ;extruding 
-G1 X84.663 Y88.067 ;extruding 
-G1 X71.584 Y80.515 ;extruding 
-G1 X84.617 Y57.941 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.804 Y58.402 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.347 Y65.644 ;extruding 
-G1 X97.347 Y80.290 ;extruding 
-G1 X84.663 Y87.613 ;extruding 
-G1 X72.120 Y80.371 ;extruding 
-G1 X84.760 Y58.478 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X85.094 Y57.900 ;not extruding 
-G1 X84.581 Y57.573 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.954 Y65.294 ;extruding 
-G1 X97.954 Y80.641 ;extruding 
-G1 X84.663 Y88.314 ;extruding 
-G1 X71.290 Y80.594 ;extruding 
-G1 X84.538 Y57.648 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.438 Y57.036 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X98.347 Y65.067 ;extruding 
-G1 X98.347 Y80.867 ;extruding 
-G1 X84.663 Y88.768 ;extruding 
-G1 X70.754 Y80.737 ;extruding 
-G1 X84.394 Y57.112 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.812 Y57.480 ;not extruding 
-G1 X84.663 Y91.366 ;not extruding 
-G1 X71.087 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.949 Y89.634 ;extruding 
-G1 X71.087 Y95.905 ;extruding 
-G1 X71.087 Y83.450 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.163 Y89.634 ;extruding 
-G1 X71.479 Y95.225 ;extruding 
-G1 X71.479 Y84.130 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y83.463 ;not extruding 
-G1 X70.872 Y82.991 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X82.378 Y89.634 ;extruding 
-G1 X70.872 Y96.277 ;extruding 
-G1 X70.872 Y83.078 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.479 Y82.311 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X83.163 Y89.634 ;extruding 
-G1 X70.479 Y96.957 ;extruding 
-G1 X70.479 Y82.398 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.982 Y82.601 ;not extruding 
-G1 X55.296 Y3.702 ;not extruding 
-G1 X68.946 Y79.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.646 Y79.654 ;extruding 
-G1 X27.995 Y56.012 ;extruding 
-G1 X41.646 Y32.369 ;extruding 
-G1 X68.946 Y32.369 ;extruding 
-G1 X82.596 Y56.012 ;extruding 
-G1 X68.989 Y79.579 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.719 Y79.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.872 Y79.262 ;extruding 
-G1 X28.449 Y56.012 ;extruding 
-G1 X41.872 Y32.762 ;extruding 
-G1 X68.719 Y32.762 ;extruding 
-G1 X82.142 Y56.012 ;extruding 
-G1 X68.763 Y79.186 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.719 Y79.842 ;not extruding 
-G1 X69.070 Y79.869 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.522 Y79.869 ;extruding 
-G1 X27.748 Y56.012 ;extruding 
-G1 X41.522 Y32.154 ;extruding 
-G1 X69.070 Y32.154 ;extruding 
-G1 X82.844 Y56.012 ;extruding 
-G1 X69.113 Y79.794 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X69.296 Y80.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.295 Y80.262 ;extruding 
-G1 X27.294 Y56.012 ;extruding 
-G1 X41.295 Y31.762 ;extruding 
-G1 X69.296 Y31.762 ;extruding 
-G1 X83.297 Y56.012 ;extruding 
-G1 X69.340 Y80.186 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.826 Y79.923 ;not extruding 
-G1 D-147.000 ;not extruding 
-G1 X84.663 Y91.366 ;not extruding 
-G1 X68.372 Y82.369 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.372 Y97.472 ;extruding 
-G1 X55.296 Y105.022 ;extruding 
-G1 X42.219 Y97.472 ;extruding 
-G1 X42.219 Y82.369 ;extruding 
-G1 X68.285 Y82.369 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X67.979 Y82.762 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X67.979 Y97.245 ;extruding 
-G1 X55.296 Y104.568 ;extruding 
-G1 X42.612 Y97.245 ;extruding 
-G1 X42.612 Y82.762 ;extruding 
-G1 X67.892 Y82.762 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.551 Y82.662 ;not extruding 
-G1 X68.729 Y82.512 ;not extruding 
-G1 X41.862 Y82.512 ;not extruding 
-G1 X40.862 Y83.899 ;not extruding 
-G1 X39.862 Y83.321 ;not extruding 
-G1 X39.505 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.505 Y95.905 ;extruding 
-G1 X28.643 Y89.634 ;extruding 
-G1 X39.429 Y83.406 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.112 Y95.225 ;extruding 
-G1 X29.428 Y89.634 ;extruding 
-G1 X39.037 Y84.086 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.683 Y83.942 ;not extruding 
-G1 X39.862 Y83.321 ;not extruding 
-G1 X40.862 Y83.899 ;not extruding 
-G1 X41.862 Y82.512 ;not extruding 
-G1 X68.729 Y82.512 ;not extruding 
-G1 X69.729 Y83.997 ;not extruding 
-G1 X70.729 Y83.415 ;not extruding 
-G1 X71.087 Y83.363 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.949 Y89.634 ;extruding 
-G1 X71.087 Y95.905 ;extruding 
-G1 X71.087 Y83.450 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y84.043 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X81.163 Y89.634 ;extruding 
-G1 X71.479 Y95.225 ;extruding 
-G1 X71.479 Y84.130 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y83.463 ;not extruding 
-G1 X82.378 Y89.634 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X55.296 Y105.270 ;extruding 
-G1 X28.214 Y89.634 ;extruding 
-G1 X40.635 Y82.462 ;extruding 
-G1 X41.476 Y82.154 ;extruding 
-G1 X69.116 Y82.154 ;extruding 
-G1 X69.956 Y82.462 ;extruding 
-G1 X82.302 Y89.590 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X83.163 Y89.634 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X55.296 Y105.723 ;extruding 
-G1 X27.428 Y89.634 ;extruding 
-G1 X40.468 Y82.105 ;extruding 
-G1 X41.406 Y81.762 ;extruding 
-G1 X69.185 Y81.762 ;extruding 
-G1 X70.123 Y82.105 ;extruding 
-G1 X83.088 Y89.590 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X82.592 Y89.736 ;not extruding 
-G1 X70.694 Y83.342 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X69.789 Y82.819 ;extruding 
-G1 X69.512 Y82.718 ;extruding 
-G1 X70.694 Y83.900 ;extruding 
-G1 X70.694 Y84.458 ;extruding 
-G1 X68.783 Y82.547 ;extruding 
-G1 X68.765 Y82.547 ;extruding 
-G1 X68.765 Y83.087 ;extruding 
-G1 X70.694 Y85.016 ;extruding 
-G1 X70.694 Y85.574 ;extruding 
-G1 X68.765 Y83.645 ;extruding 
-G1 X68.765 Y84.203 ;extruding 
-G1 X70.694 Y86.132 ;extruding 
-G1 X70.694 Y86.690 ;extruding 
-G1 X68.765 Y84.761 ;extruding 
-G1 X68.765 Y85.319 ;extruding 
-G1 X70.694 Y87.249 ;extruding 
-G1 X70.694 Y87.807 ;extruding 
-G1 X68.765 Y85.877 ;extruding 
-G1 X68.765 Y86.436 ;extruding 
-G1 X70.694 Y88.365 ;extruding 
-G1 X70.694 Y88.923 ;extruding 
-G1 X68.765 Y86.994 ;extruding 
-G1 X68.765 Y87.552 ;extruding 
-G1 X70.694 Y89.481 ;extruding 
-G1 X70.694 Y90.039 ;extruding 
-G1 X68.765 Y88.110 ;extruding 
-G1 X68.765 Y88.668 ;extruding 
-G1 X70.694 Y90.597 ;extruding 
-G1 X70.694 Y91.155 ;extruding 
-G1 X68.765 Y89.226 ;extruding 
-G1 X68.765 Y89.784 ;extruding 
-G1 X70.694 Y91.713 ;extruding 
-G1 X70.694 Y92.272 ;extruding 
-G1 X68.765 Y90.342 ;extruding 
-G1 X68.765 Y90.900 ;extruding 
-G1 X70.694 Y92.830 ;extruding 
-G1 X70.694 Y93.388 ;extruding 
-G1 X68.765 Y91.459 ;extruding 
-G1 X68.765 Y92.017 ;extruding 
-G1 X70.694 Y93.946 ;extruding 
-G1 X70.694 Y94.504 ;extruding 
-G1 X68.765 Y92.575 ;extruding 
-G1 X68.765 Y93.133 ;extruding 
-G1 X70.694 Y95.062 ;extruding 
-G1 X70.694 Y95.620 ;extruding 
-G1 X68.765 Y93.691 ;extruding 
-G1 X68.765 Y94.249 ;extruding 
-G1 X70.534 Y96.018 ;extruding 
-G1 X70.180 Y96.223 ;extruding 
-G1 X68.765 Y94.807 ;extruding 
-G1 X68.765 Y95.365 ;extruding 
-G1 X69.826 Y96.427 ;extruding 
-G1 X69.473 Y96.631 ;extruding 
-G1 X68.765 Y95.923 ;extruding 
-G1 X68.765 Y96.482 ;extruding 
-G1 X69.119 Y96.835 ;extruding 
-G1 X68.765 Y97.040 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X69.729 Y95.369 ;not extruding 
-G1 X69.729 Y83.997 ;not extruding 
-G1 X68.729 Y82.512 ;not extruding 
-G1 X41.862 Y82.512 ;not extruding 
-G1 X40.862 Y83.899 ;not extruding 
-G1 X40.862 Y95.369 ;not extruding 
-G1 X39.897 Y95.926 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.897 Y95.359 ;extruding 
-G1 X41.239 Y96.701 ;extruding 
-G1 X41.827 Y97.040 ;extruding 
-G1 X41.827 Y96.721 ;extruding 
-G1 X39.897 Y94.792 ;extruding 
-G1 X39.897 Y94.225 ;extruding 
-G1 X41.827 Y96.154 ;extruding 
-G1 X41.827 Y95.587 ;extruding 
-G1 X39.897 Y93.658 ;extruding 
-G1 X39.897 Y93.091 ;extruding 
-G1 X41.827 Y95.020 ;extruding 
-G1 X41.827 Y94.453 ;extruding 
-G1 X39.897 Y92.524 ;extruding 
-G1 X39.897 Y91.957 ;extruding 
-G1 X41.827 Y93.886 ;extruding 
-G1 X41.827 Y93.319 ;extruding 
-G1 X39.897 Y91.390 ;extruding 
-G1 X39.897 Y90.823 ;extruding 
-G1 X41.827 Y92.752 ;extruding 
-G1 X41.827 Y92.185 ;extruding 
-G1 X39.897 Y90.256 ;extruding 
-G1 X39.897 Y89.689 ;extruding 
-G1 X41.827 Y91.619 ;extruding 
-G1 X41.827 Y91.052 ;extruding 
-G1 X39.897 Y89.122 ;extruding 
-G1 X39.897 Y88.555 ;extruding 
-G1 X41.827 Y90.485 ;extruding 
-G1 X41.827 Y89.918 ;extruding 
-G1 X39.897 Y87.988 ;extruding 
-G1 X39.897 Y87.422 ;extruding 
-G1 X41.827 Y89.351 ;extruding 
-G1 X41.827 Y88.784 ;extruding 
-G1 X39.897 Y86.855 ;extruding 
-G1 X39.897 Y86.288 ;extruding 
-G1 X41.827 Y88.217 ;extruding 
-G1 X41.827 Y87.650 ;extruding 
-G1 X39.897 Y85.721 ;extruding 
-G1 X39.897 Y85.154 ;extruding 
-G1 X41.827 Y87.083 ;extruding 
-G1 X41.827 Y86.516 ;extruding 
-G1 X39.897 Y84.587 ;extruding 
-G1 X39.897 Y84.020 ;extruding 
-G1 X41.827 Y85.949 ;extruding 
-G1 X41.827 Y85.382 ;extruding 
-G1 X39.897 Y83.453 ;extruding 
-G1 X39.897 Y83.342 ;extruding 
-G1 X40.186 Y83.175 ;extruding 
-G1 X41.827 Y84.815 ;extruding 
-G1 X41.827 Y84.248 ;extruding 
-G1 X40.546 Y82.967 ;extruding 
-G1 X40.802 Y82.819 ;extruding 
-G1 X40.921 Y82.776 ;extruding 
-G1 X41.827 Y83.681 ;extruding 
-G1 X41.827 Y83.114 ;extruding 
-G1 X41.336 Y82.624 ;extruding 
-G1 X41.545 Y82.547 ;extruding 
-G1 X41.827 Y82.547 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X55.296 Y3.702 ;not extruding 
-G1 X68.946 Y79.654 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.646 Y79.654 ;extruding 
-G1 X27.995 Y56.012 ;extruding 
-G1 X41.646 Y32.369 ;extruding 
-G1 X68.946 Y32.369 ;extruding 
-G1 X82.596 Y56.012 ;extruding 
-G1 X68.989 Y79.579 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.719 Y79.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.872 Y79.262 ;extruding 
-G1 X28.449 Y56.012 ;extruding 
-G1 X41.872 Y32.762 ;extruding 
-G1 X68.719 Y32.762 ;extruding 
-G1 X82.142 Y56.012 ;extruding 
-G1 X68.763 Y79.186 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.632 Y79.835 ;not extruding 
-G1 X69.070 Y79.869 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.522 Y79.869 ;extruding 
-G1 X27.748 Y56.012 ;extruding 
-G1 X41.522 Y32.154 ;extruding 
-G1 X69.070 Y32.154 ;extruding 
-G1 X82.844 Y56.012 ;extruding 
-G1 X69.113 Y79.794 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X69.296 Y80.262 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X41.295 Y80.262 ;extruding 
-G1 X27.294 Y56.012 ;extruding 
-G1 X41.295 Y31.762 ;extruding 
-G1 X69.296 Y31.762 ;extruding 
-G1 X83.297 Y56.012 ;extruding 
-G1 X69.340 Y80.186 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.842 Y79.901 ;not extruding 
-G1 X68.229 Y11.170 ;not extruding 
-G1 X86.878 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.740 Y49.741 ;extruding 
-G1 X97.740 Y62.283 ;extruding 
-G1 X86.953 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X87.663 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.347 Y50.421 ;extruding 
-G1 X97.347 Y61.603 ;extruding 
-G1 X87.739 Y56.055 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X87.161 Y55.722 ;not extruding 
-G1 X84.660 Y54.158 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.584 Y31.509 ;extruding 
-G1 X84.663 Y23.957 ;extruding 
-G1 X97.740 Y31.507 ;extruding 
-G1 X97.740 Y46.606 ;extruding 
-G1 X84.735 Y54.114 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.804 Y53.621 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X72.120 Y31.652 ;extruding 
-G1 X84.663 Y24.410 ;extruding 
-G1 X97.347 Y31.733 ;extruding 
-G1 X97.347 Y46.379 ;extruding 
-G1 X84.879 Y53.578 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X84.360 Y53.995 ;not extruding 
-G1 X84.962 Y54.396 ;not extruding 
-G1 X71.528 Y31.128 ;not extruding 
-G1 X72.229 Y29.568 ;not extruding 
-G1 X71.229 Y28.991 ;not extruding 
-G1 X71.087 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.087 Y16.119 ;extruding 
-G1 X81.949 Y22.390 ;extruding 
-G1 X71.162 Y28.617 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.479 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.479 Y16.799 ;extruding 
-G1 X81.163 Y22.390 ;extruding 
-G1 X71.555 Y27.937 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.977 Y28.271 ;not extruding 
-G1 X71.028 Y15.837 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.954 Y31.383 ;extruding 
-G1 X97.954 Y62.655 ;extruding 
-G1 X85.533 Y55.483 ;extruding 
-G1 X84.846 Y54.909 ;extruding 
-G1 X71.026 Y30.972 ;extruding 
-G1 X70.872 Y30.090 ;extruding 
-G1 X70.872 Y15.747 ;extruding 
-G1 X70.952 Y15.793 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.479 Y15.067 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X98.347 Y31.156 ;extruding 
-G1 X98.347 Y63.335 ;extruding 
-G1 X85.307 Y55.806 ;extruding 
-G1 X84.541 Y55.165 ;extruding 
-G1 X70.651 Y31.108 ;extruding 
-G1 X70.479 Y30.124 ;extruding 
-G1 X70.479 Y15.154 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.854 Y15.510 ;not extruding 
-G1 X71.541 Y31.079 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X71.401 Y30.836 ;extruding 
-G1 X71.303 Y30.275 ;extruding 
-G1 X71.900 Y30.872 ;extruding 
-G1 X72.259 Y30.665 ;extruding 
-G1 X71.265 Y29.671 ;extruding 
-G1 X71.265 Y29.106 ;extruding 
-G1 X72.617 Y30.458 ;extruding 
-G1 X72.976 Y30.251 ;extruding 
-G1 X71.564 Y28.839 ;extruding 
-G1 X71.922 Y28.632 ;extruding 
-G1 X73.335 Y30.044 ;extruding 
-G1 X73.693 Y29.837 ;extruding 
-G1 X72.281 Y28.425 ;extruding 
-G1 X72.639 Y28.218 ;extruding 
-G1 X74.052 Y29.630 ;extruding 
-G1 X74.410 Y29.423 ;extruding 
-G1 X72.998 Y28.011 ;extruding 
-G1 X73.357 Y27.804 ;extruding 
-G1 X74.769 Y29.216 ;extruding 
-G1 X75.127 Y29.009 ;extruding 
-G1 X73.715 Y27.597 ;extruding 
-G1 X74.074 Y27.390 ;extruding 
-G1 X75.486 Y28.802 ;extruding 
-G1 X75.845 Y28.595 ;extruding 
-G1 X74.432 Y27.183 ;extruding 
-G1 X74.791 Y26.976 ;extruding 
-G1 X76.203 Y28.388 ;extruding 
-G1 X76.562 Y28.181 ;extruding 
-G1 X75.150 Y26.769 ;extruding 
-G1 X75.508 Y26.562 ;extruding 
-G1 X76.920 Y27.974 ;extruding 
-G1 X77.279 Y27.767 ;extruding 
-G1 X75.867 Y26.355 ;extruding 
-G1 X76.225 Y26.148 ;extruding 
-G1 X77.638 Y27.560 ;extruding 
-G1 X77.996 Y27.353 ;extruding 
-G1 X76.584 Y25.940 ;extruding 
-G1 X76.943 Y25.733 ;extruding 
-G1 X78.355 Y27.146 ;extruding 
-G1 X78.713 Y26.939 ;extruding 
-G1 X77.301 Y25.526 ;extruding 
-G1 X77.660 Y25.319 ;extruding 
-G1 X79.072 Y26.732 ;extruding 
-G1 X79.431 Y26.525 ;extruding 
-G1 X78.018 Y25.112 ;extruding 
-G1 X78.377 Y24.905 ;extruding 
-G1 X79.789 Y26.318 ;extruding 
-G1 X80.148 Y26.111 ;extruding 
-G1 X78.736 Y24.698 ;extruding 
-G1 X79.094 Y24.491 ;extruding 
-G1 X80.506 Y25.904 ;extruding 
-G1 X80.865 Y25.696 ;extruding 
-G1 X79.453 Y24.284 ;extruding 
-G1 X79.811 Y24.077 ;extruding 
-G1 X81.224 Y25.489 ;extruding 
-G1 X81.582 Y25.282 ;extruding 
-G1 X80.170 Y23.870 ;extruding 
-G1 X80.528 Y23.663 ;extruding 
-G1 X81.941 Y25.075 ;extruding 
-G1 X82.299 Y24.868 ;extruding 
-G1 X80.887 Y23.456 ;extruding 
-G1 X81.246 Y23.249 ;extruding 
-G1 X82.658 Y24.661 ;extruding 
-G1 X83.017 Y24.454 ;extruding 
-G1 X81.604 Y23.042 ;extruding 
-G1 X81.963 Y22.835 ;extruding 
-G1 X83.375 Y24.247 ;extruding 
-G1 X83.734 Y24.040 ;extruding 
-G1 X82.835 Y23.141 ;extruding 
-G1 X82.856 Y23.120 ;extruding 
-G1 X84.092 Y23.833 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X82.163 Y23.833 ;not extruding 
-G1 X72.229 Y29.568 ;not extruding 
-G1 X71.528 Y31.128 ;not extruding 
-G1 X84.962 Y54.396 ;not extruding 
-G1 X86.663 Y54.568 ;not extruding 
-G1 X96.597 Y48.833 ;not extruding 
-G1 X97.562 Y47.163 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X97.201 Y47.371 ;extruding 
-G1 X97.448 Y47.618 ;extruding 
-G1 X97.284 Y47.782 ;extruding 
-G1 X97.562 Y47.782 ;extruding 
-G1 X97.562 Y48.300 ;extruding 
-G1 X96.841 Y47.579 ;extruding 
-G1 X96.480 Y47.787 ;extruding 
-G1 X97.562 Y48.868 ;extruding 
-G1 X97.562 Y49.390 ;extruding 
-G1 X97.532 Y49.407 ;extruding 
-G1 X96.120 Y47.995 ;extruding 
-G1 X95.759 Y48.203 ;extruding 
-G1 X97.171 Y49.615 ;extruding 
-G1 X96.811 Y49.823 ;extruding 
-G1 X95.399 Y48.411 ;extruding 
-G1 X95.038 Y48.619 ;extruding 
-G1 X96.451 Y50.031 ;extruding 
-G1 X96.090 Y50.240 ;extruding 
-G1 X94.678 Y48.827 ;extruding 
-G1 X94.317 Y49.035 ;extruding 
-G1 X95.730 Y50.448 ;extruding 
-G1 X95.369 Y50.656 ;extruding 
-G1 X93.957 Y49.244 ;extruding 
-G1 X93.596 Y49.452 ;extruding 
-G1 X95.009 Y50.864 ;extruding 
-G1 X94.648 Y51.072 ;extruding 
-G1 X93.236 Y49.660 ;extruding 
-G1 X92.876 Y49.868 ;extruding 
-G1 X94.288 Y51.280 ;extruding 
-G1 X93.927 Y51.488 ;extruding 
-G1 X92.515 Y50.076 ;extruding 
-G1 X92.155 Y50.284 ;extruding 
-G1 X93.567 Y51.696 ;extruding 
-G1 X93.206 Y51.904 ;extruding 
-G1 X91.794 Y50.492 ;extruding 
-G1 X91.434 Y50.700 ;extruding 
-G1 X92.846 Y52.113 ;extruding 
-G1 X92.486 Y52.321 ;extruding 
-G1 X91.073 Y50.908 ;extruding 
-G1 X90.713 Y51.117 ;extruding 
-G1 X92.125 Y52.529 ;extruding 
-G1 X91.765 Y52.737 ;extruding 
-G1 X90.352 Y51.325 ;extruding 
-G1 X89.992 Y51.533 ;extruding 
-G1 X91.404 Y52.945 ;extruding 
-G1 X91.044 Y53.153 ;extruding 
-G1 X89.631 Y51.741 ;extruding 
-G1 X89.271 Y51.949 ;extruding 
-G1 X90.683 Y53.361 ;extruding 
-G1 X90.323 Y53.569 ;extruding 
-G1 X88.911 Y52.157 ;extruding 
-G1 X88.550 Y52.365 ;extruding 
-G1 X89.962 Y53.777 ;extruding 
-G1 X89.602 Y53.986 ;extruding 
-G1 X88.190 Y52.573 ;extruding 
-G1 X87.829 Y52.781 ;extruding 
-G1 X89.241 Y54.194 ;extruding 
-G1 X88.881 Y54.402 ;extruding 
-G1 X87.469 Y52.990 ;extruding 
-G1 X87.108 Y53.198 ;extruding 
-G1 X88.521 Y54.610 ;extruding 
-G1 X88.160 Y54.818 ;extruding 
-G1 X86.748 Y53.406 ;extruding 
-G1 X86.387 Y53.614 ;extruding 
-G1 X87.800 Y55.026 ;extruding 
-G1 X87.439 Y55.234 ;extruding 
-G1 X86.027 Y53.822 ;extruding 
-G1 X85.666 Y54.030 ;extruding 
-G1 X87.079 Y55.442 ;extruding 
-G1 X86.718 Y55.650 ;extruding 
-G1 X85.306 Y54.238 ;extruding 
-G1 X85.011 Y54.409 ;extruding 
-G1 X85.151 Y54.652 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X72.349 Y13.548 ;not extruding 
-G1 X68.372 Y14.551 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.372 Y29.654 ;extruding 
-G1 X42.219 Y29.654 ;extruding 
-G1 X42.219 Y14.551 ;extruding 
-G1 X55.296 Y7.002 ;extruding 
-G1 X68.297 Y14.508 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X67.979 Y14.778 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X67.979 Y29.262 ;extruding 
-G1 X42.612 Y29.262 ;extruding 
-G1 X42.612 Y14.778 ;extruding 
-G1 X55.296 Y7.455 ;extruding 
-G1 X67.904 Y14.735 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.553 Y14.864 ;not extruding 
-G1 X68.587 Y14.427 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.587 Y29.869 ;extruding 
-G1 X42.005 Y29.869 ;extruding 
-G1 X42.005 Y14.427 ;extruding 
-G1 X55.296 Y6.754 ;extruding 
-G1 X68.511 Y14.384 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.979 Y14.201 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X68.979 Y30.262 ;extruding 
-G1 X41.612 Y30.262 ;extruding 
-G1 X41.612 Y14.201 ;extruding 
-G1 X55.296 Y6.300 ;extruding 
-G1 X68.904 Y14.157 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X68.689 Y14.703 ;not extruding 
-G1 X9.994 Y29.857 ;not extruding 
-G1 X23.714 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.852 Y62.283 ;extruding 
-G1 X12.852 Y49.741 ;extruding 
-G1 X23.638 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X22.928 Y56.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.244 Y61.603 ;extruding 
-G1 X13.244 Y50.421 ;extruding 
-G1 X22.853 Y55.968 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X23.430 Y56.302 ;not extruding 
-G1 X25.931 Y54.158 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X12.852 Y46.606 ;extruding 
-G1 X12.852 Y31.507 ;extruding 
-G1 X25.928 Y23.957 ;extruding 
-G1 X39.008 Y31.509 ;extruding 
-G1 X25.975 Y54.082 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.788 Y53.621 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.244 Y46.379 ;extruding 
-G1 X13.244 Y31.733 ;extruding 
-G1 X25.928 Y24.410 ;extruding 
-G1 X38.471 Y31.652 ;extruding 
-G1 X25.831 Y53.546 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.588 Y54.166 ;not extruding 
-G1 X25.629 Y54.396 ;not extruding 
-G1 X39.063 Y31.128 ;not extruding 
-G1 X38.362 Y29.568 ;not extruding 
-G1 X39.362 Y28.991 ;not extruding 
-G1 X39.505 Y28.661 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X28.643 Y22.390 ;extruding 
-G1 X39.505 Y16.119 ;extruding 
-G1 X39.505 Y28.574 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X39.112 Y27.981 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X29.428 Y22.390 ;extruding 
-G1 X39.112 Y16.799 ;extruding 
-G1 X39.112 Y27.894 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X38.933 Y28.532 ;not extruding 
-G1 X39.719 Y15.747 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.719 Y30.090 ;extruding 
-G1 X39.565 Y30.972 ;extruding 
-G1 X25.746 Y54.909 ;extruding 
-G1 X25.059 Y55.483 ;extruding 
-G1 X12.637 Y62.655 ;extruding 
-G1 X12.637 Y31.383 ;extruding 
-G1 X39.644 Y15.790 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.112 Y15.067 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X40.112 Y30.124 ;extruding 
-G1 X39.940 Y31.108 ;extruding 
-G1 X26.051 Y55.165 ;extruding 
-G1 X25.284 Y55.806 ;extruding 
-G1 X12.244 Y63.335 ;extruding 
-G1 X12.244 Y31.156 ;extruding 
-G1 X40.037 Y15.110 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X40.011 Y15.638 ;not extruding 
-G1 X39.327 Y29.012 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X37.934 Y28.208 ;extruding 
-G1 X39.327 Y29.600 ;extruding 
-G1 X39.327 Y30.056 ;extruding 
-G1 X39.307 Y30.169 ;extruding 
-G1 X36.542 Y27.404 ;extruding 
-G1 X35.150 Y26.600 ;extruding 
-G1 X39.219 Y30.670 ;extruding 
-G1 X39.190 Y30.836 ;extruding 
-G1 X39.050 Y31.079 ;extruding 
-G1 X33.758 Y25.796 ;extruding 
-G1 X32.366 Y24.993 ;extruding 
-G1 X37.636 Y30.263 ;extruding 
-G1 X36.244 Y29.460 ;extruding 
-G1 X30.973 Y24.189 ;extruding 
-G1 X29.581 Y23.385 ;extruding 
-G1 X34.852 Y28.656 ;extruding 
-G1 X33.460 Y27.852 ;extruding 
-G1 X28.364 Y22.756 ;extruding 
-G1 X27.991 Y22.972 ;extruding 
-G1 X32.068 Y27.048 ;extruding 
-G1 X30.676 Y26.245 ;extruding 
-G1 X27.618 Y23.187 ;extruding 
-G1 X27.245 Y23.402 ;extruding 
-G1 X29.284 Y25.441 ;extruding 
-G1 X27.891 Y24.637 ;extruding 
-G1 X26.872 Y23.618 ;extruding 
-G1 X26.499 Y23.833 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X28.428 Y23.833 ;not extruding 
-G1 X38.362 Y29.568 ;not extruding 
-G1 X39.063 Y31.128 ;not extruding 
-G1 X25.629 Y54.396 ;not extruding 
-G1 X23.928 Y54.568 ;not extruding 
-G1 X13.994 Y48.833 ;not extruding 
-G1 X13.030 Y49.390 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X13.030 Y48.811 ;extruding 
-G1 X14.401 Y50.182 ;extruding 
-G1 X15.772 Y50.973 ;extruding 
-G1 X13.030 Y48.231 ;extruding 
-G1 X13.030 Y47.652 ;extruding 
-G1 X17.143 Y51.765 ;extruding 
-G1 X18.514 Y52.556 ;extruding 
-G1 X13.243 Y47.285 ;extruding 
-G1 X14.614 Y48.077 ;extruding 
-G1 X19.884 Y53.348 ;extruding 
-G1 X21.255 Y54.139 ;extruding 
-G1 X15.985 Y48.868 ;extruding 
-G1 X17.355 Y49.660 ;extruding 
-G1 X22.626 Y54.930 ;extruding 
-G1 X23.928 Y55.682 ;extruding 
-G1 X23.947 Y55.672 ;extruding 
-G1 X18.726 Y50.451 ;extruding 
-G1 X20.097 Y51.243 ;extruding 
-G1 X24.314 Y55.460 ;extruding 
-G1 X24.681 Y55.247 ;extruding 
-G1 X21.468 Y52.034 ;extruding 
-G1 X22.839 Y52.826 ;extruding 
-G1 X25.018 Y55.005 ;extruding 
-G1 X25.334 Y54.741 ;extruding 
-G1 X24.210 Y53.617 ;extruding 
-G1 X25.581 Y54.409 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X9.994 Y82.166 ;not extruding 
-G1 X25.931 Y57.866 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.008 Y80.515 ;extruding 
-G1 X25.928 Y88.067 ;extruding 
-G1 X12.852 Y80.517 ;extruding 
-G1 X12.852 Y65.417 ;extruding 
-G1 X25.856 Y57.909 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X25.788 Y58.402 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X38.471 Y80.371 ;extruding 
-G1 X25.928 Y87.613 ;extruding 
-G1 X13.244 Y80.290 ;extruding 
-G1 X13.244 Y65.644 ;extruding 
-G1 X25.712 Y58.446 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.290 Y58.112 ;not extruding 
-G1 X26.010 Y57.573 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.301 Y80.594 ;extruding 
-G1 X25.928 Y88.314 ;extruding 
-G1 X12.637 Y80.641 ;extruding 
-G1 X12.637 Y65.294 ;extruding 
-G1 X25.935 Y57.616 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.154 Y57.036 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X39.837 Y80.737 ;extruding 
-G1 X25.928 Y88.768 ;extruding 
-G1 X12.244 Y80.867 ;extruding 
-G1 X12.244 Y65.067 ;extruding 
-G1 X26.078 Y57.080 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X26.253 Y57.608 ;not extruding 
-G1 X100.597 Y82.166 ;not extruding 
-G1 X71.584 Y80.515 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.660 Y57.866 ;extruding 
-G1 X97.740 Y65.417 ;extruding 
-G1 X97.740 Y80.517 ;extruding 
-G1 X84.663 Y88.067 ;extruding 
-G1 X71.659 Y80.558 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X72.120 Y80.371 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.804 Y58.402 ;extruding 
-G1 X97.347 Y65.644 ;extruding 
-G1 X97.347 Y80.290 ;extruding 
-G1 X84.663 Y87.613 ;extruding 
-G1 X72.195 Y80.415 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.575 Y80.173 ;not extruding 
-G1 X71.290 Y80.594 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.581 Y57.573 ;extruding 
-G1 X97.954 Y65.294 ;extruding 
-G1 X97.954 Y80.641 ;extruding 
-G1 X84.663 Y88.314 ;extruding 
-G1 X71.366 Y80.637 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X70.754 Y80.737 ;not extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-DWELL 0.15
-G1 X84.438 Y57.036 ;extruding 
-G1 X98.347 Y65.067 ;extruding 
-G1 X98.347 Y80.867 ;extruding 
-G1 X84.663 Y88.768 ;extruding 
-G1 X70.829 Y80.781 ;extruding 
-FILEWRITE $hFile"\x05\x02\x30\x34\x44\x49\x20\x20\x43\x46\x03"
-G1 X71.199 Y80.365 ;not extruding 
-;Return to Home
-
-G90
-G0 D0 F60
-G0 X0 Y0 F60
-
-M02
-
-;##########Nordson Pressure Box Functions############;
-
-
-
-DFS setPress5
-
-
-		;### Suggested code from Aerotech ###;
-
-		FILECLOSE
-
-		$hFile = FILEOPEN "\\.\COM5", 2
-		IF ($info[0] != 0)
-  			TASKERROR $info[0], $info[1]
-		ENDIF
-		COMMINIT $hFile, "baud=115200 parity=N data=8 stop=1"
-        ;$strtask1 = DBLTOSTR( $P, 0 )
-        ;$strtask1 = "COM" + $strtask1
-        ;$hFile = FILEOPEN $strtask1, 2
-        ;COMMINIT $hFile, "baud=115200 parity=N data=8 stop=1"
-        COMMSETTIMEOUT $hFile, -1, -1, 1000
-
-        $press = $Q * 10.0
-        $strtask2 = DBLTOSTR( $press , 0 )
-
-
-        $length = STRLEN( $strtask2 )
-        WHILE $length < 4.0
-                $strtask2 = "0" + $strtask2
-                $length = STRLEN( $strtask2 )
-        ENDWHILE
-
-
-        $strtask2 = "08PS  " + $strtask2
-
-        $cCheck = 0.00
-        $lame = STRTOASCII ($strtask2, 0)
-        $cCheck = $cCheck - $lame
-        $lame = STRTOASCII( $strtask2, 1)
-        $cCheck = $cCheck - $lame
-        $lame = STRTOASCII( $strtask2, 2)
-        $cCheck = $cCheck - $lame
-        $lame = STRTOASCII( $strtask2, 3)
-        $cCheck = $cCheck - $lame
-        $lame = STRTOASCII( $strtask2, 4)
-        $cCheck = $cCheck - $lame
-        $lame = STRTOASCII( $strtask2, 5)
-        $cCheck = $cCheck - $lame
-        $lame = STRTOASCII( $strtask2, 6)
-        $cCheck = $cCheck - $lame
-        $lame = STRTOASCII( $strtask2, 7)
-        $cCheck = $cCheck - $lame
-        $lame = STRTOASCII( $strtask2, 8)
-        $cCheck = $cCheck - $lame
-        $lame = STRTOASCII( $strtask2, 9)
-        $cCheck = $cCheck - $lame
-
-        WHILE( $cCheck) < 0
-                $cCheck = $cCheck + 256
-        ENDWHILE
-
-
-        $strtask3 = makestring "{#H}" $cCheck
-        $strtask3 = STRUPR( $strtask3 )
-        $strtask2 = "\x02" + $strtask2 + $strtask3 + "\x03"
-
-        FILEWRITE $hFile "\x05"
-        FILEWRITE $hFile $strtask2
-        FILEWRITE $hFile "\x04"
-
-
-        FILECLOSE $hFile
-
-
-ENDDFS
